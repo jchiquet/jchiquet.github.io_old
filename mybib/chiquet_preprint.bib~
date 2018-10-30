@@ -1,0 +1,24 @@
+@preprint{submitted_guinot,
+  TITLE = {{Learning the optimal scale for GWAS through hierarchical SNP aggregation}},
+  AUTHOR = {Guinot, Florent and Szafranski, Marie and Ambroise, Christophe and Samson, Franck},
+  hal     =      {https://hal.archives-ouvertes.fr/hal-01597553}
+  YEAR = {2017},
+  
+}
+
+@preprint{submitted_jcgs_chiquet,
+  author = 	 {Chiquet, J. and Mariadassous, M. and Robin, Stéphane},
+  title = 	 {Variational inference for sparse network reconstruction from count data},
+  journal = 	 {submitted to JCGS},
+  arxiv =        {{https://arxiv.org/abs/1806.03120}},
+  code = {{https://github.com/jchiquet/PLNmodels}},
+}
+
+@preprint{submitted_jrssb_tabouy,
+  author = 	 {Tabouy, T. and Barbillon, P. and Chiquet, J.}, 
+  title = 	 {Variational Inference for Stochastic Block Models from Sampled Data},
+  journal = 	 {In revision for JASA},
+  arxiv =        {{https://arxiv.org/abs/1707.04141}},
+}
+
+

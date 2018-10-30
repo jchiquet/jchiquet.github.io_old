@@ -20,7 +20,7 @@ scholar:
   sort_by: year
   order: descending
 
-  source: ../mybib
+  source: mybib
   bibliography_template: bib
   bibliography_class: bibliography
 
