@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  {% include head.html %}
+  
+  <!-- body -->
+  <body>
+
+    {% include header.html %}
+    
+    <!-- Begin page content -->
+    <div class="container">
+      <div class="page-header">
+        {% if page.title %} <h1>{{ page.title }}</h1> {% endif %}	
+      </div>
+      <div class="row">
+	<div class="col-md-9">
+	  {{ content }} <!-- content of the page -->	  
+	</div>
+	<div class="col-md-3">
+          <div class="panel panel-default" style="position:fixed">
+            <ul class="nav sidebar-nav">
+	      <li><a href="publications.html#preprint" >Preprints </a></li>
+	      <li><a href="publications.html#journals" >Journal paper</a></li>
+	      <li><a href="publications.html#inbook" >Book chapter</a></li>
+	      <li><a href="publications.html#popular" >Popular science</a> </li>   
+	      <li><a href="publications.html#thesis"  >Thesis</a>	      </li>
+	      <li><a href="publications.html"><span class="badge">back to the top</span></a></li>
+
+	    </ul>
+	  </div>
+	</div>
+      </div>
+    </div>
+
+    <!-- footer -->
+    {% include footer.html %}
+    
+  </body>
+</html>

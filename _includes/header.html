@@ -1,0 +1,81 @@
+<!-- <header class="site-header"> -->
+  <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="collapse navbar-collapse">
+	<ul class="nav navbar-nav">
+	  {% if page.title == 'About me' %}
+          <li class="active">
+	    {% else %}
+	  <li>
+	    {% endif %}
+	    <a href="index.html">
+	       <span class="glyphicon glyphicon-user"></span> Julien Chiquet</a>
+	  </li>
+	  {% if page.title == 'Research activities' %}
+          <li class="active">
+	    {% else %}
+	  <li>
+	    {% endif %}
+	    <a href="research.html">
+	      <span class="glyphicon glyphicon-stats"></span> Research
+	    </a>
+	  </li>
+	  {% if page.title == 'Publications' %}
+          <li class="active">
+	    {% else %}
+	  <li>
+	    {% endif %}
+	    <a href="publications.html">
+	      <span class="glyphicon glyphicon-list"></span> Publications 
+	    </a>
+	  </li>
+	  {% if page.title == 'Code' %}
+          <li class="active">
+	    {% else %}
+	  <li>
+	    {% endif %}
+	    <a href="code.html">
+	      <span class="glyphicon glyphicon-list"></span> Code
+	    </a>
+	  </li>
+	  {% if page.title == 'Teaching activities' %}
+          <li class="dropdown active">
+	    {% else %}
+	  <li class="dropdown">
+	    {% endif %}
+	    <a class="dropdown-toggle" data-toggle="dropdown" href="teachings.html">
+	      <span class="glyphicon glyphicon-pencil"></span> Teachings <span class="caret"></span>
+	      <ul class="dropdown-menu">
+		<li><a href="http://github.com/jchiquet/CourseAdvancedR">Dauphine - Advanced R</a></li>
+		<li><a href="teachings_ensai_networks.html">ENSAI - Networks</a></li>
+		<li><a href="teachings_ensai_regularization.html">ENSAI - régularisation</a></li>
+		<li><a href="teachings_M1MINT_Reg.html">Ensiie - Regularized regression </a></li>
+		<li><a href="teachings_L3BI_ISV51.html">L3BI - Introduction to R</a></li>
+	      </ul>
+	    </a>
+	  </li>
+	  {% if page.title == 'Summer Schools' %}
+          <li class="dropdown active">
+	    {% else %}
+	  <li class="dropdown">
+	    {% endif %}
+	    <a class="dropdown-toggle" data-toggle="dropdown" href="summer_schools.html">
+	      <span class="glyphicon glyphicon-pencil"></span> Summer schools <span class="caret"></span>
+	      <ul class="dropdown-menu">
+		<li><a href="http://github.com/jchiquet/JC2BIM18">(JC)2BIM</a></li>
+		<li><a href="exposome.html">Exposome Advanced</a></li>
+		<li><a href="bioinfo_angers.html">Summer School Angers</a></li>
+		<li><a href="bioinfo_ips2.html">Summer School SPSS</a></li>
+	      </ul>
+	    </a>
+	  </li>
+	</ul>
+	<ul class="nav navbar-nav pull-right">
+	  <li><a href="https://github.com/{{ site.github }}"><i class="fa fa-github"></i>&nbsp;{{ site.github %}}</a></li>
+          <li><a href="http://scholar.google.fr/citations?user=FM2gRsYAAAAJ&amp;hl=en"><img width="16" src="img/gscholar.ico" />&nbsp;Scholar</a></li>
+          <li><a href="https://stateofther.github.io/"><img width="16" src="img/phare.ico" />&nbsp;StateOfTheR</a></li>
+	</ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+<!-- </header> -->

@@ -1,0 +1,45 @@
+<div class="row"> 
+  <div class="col-md-10"> {{ reference }} <br/>
+<!-- begin soft/code specific -->
+    {% if entry.note %} 
+    <p> {{ entry.note }}</p>
+    {% endif %}
+    {% if entry.download %}
+    <a role="button" class="btn btn-warning btn-xs" href="{{ entry.download }}">download</a>
+    {% endif %}
+    {% if entry.web %}
+    <a role="button" class="btn btn-danger btn-xs" href="{{ entry.web }}">web page</a>
+    {% endif %}
+<!-- end soft/code specific -->
+    {% if entry.arxiv %}
+    <a role="button" class="btn btn-danger btn-xs" href="{{ entry.arxiv }}">arXiv</a>
+    {% endif %}
+    {% if entry.hal %}
+    <a role="button" class="btn btn-danger btn-xs" href="{{ entry.hal }}">HAL</a>
+    {% endif %}
+    {% if entry.url %}
+    <a role="button" class="btn btn-danger btn-xs" href="{{ entry.url }}">url</a>
+    {% endif %}
+    {% if entry.slides %}
+    <a role="button" class="btn btn-danger btn-xs" href="{{ entry.slides }}">slides</a>
+    {% endif %}
+    {% if entry.code %}
+    <a role="button" class="btn btn-danger btn-xs" href="{{ entry.code }}">code</a>
+    {% endif %}
+  </div>
+  
+  <div class="col-md-2">
+    <div class="btn-group">
+      <button class="btn btn-info btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+	BibTeX <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+	<pre>{{ entry.bibtex }}</pre>
+      </ul>
+    </div>
+    
+
+  </div>
+</div>
+
+
