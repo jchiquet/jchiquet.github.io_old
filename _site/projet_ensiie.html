@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Julien Chiquet">
+  <meta name="description" content="Julien Chiquet's website">
+  
+
+  <title>Projet Modélisation</title>
+  <meta name="description" content="">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://julien.chiquet.cremeriefamily.info/projet_ensiie.html">
+  <link rel="alternate" type="application/rss+xml" title="" href="http://julien.chiquet.cremeriefamily.info/feed.xml">
+
+  <link rel="stylesheet" href="/css/bs-callout.css">
+  <link rel="stylesheet" href="/css/bibliography.css">
+  <link rel="stylesheet" href="/css/sticky-footer-navbar.css">
+  <link rel="stylesheet" href="/css/morecss.css">
+  
+  <!--mathjax-->
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+</head>
+
+  
+  <!-- body -->
+  i<body>
+
+    <!-- <header class="site-header"> -->
+  <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="collapse navbar-collapse">
+	<ul class="nav navbar-nav">
+	  
+	  <li>
+	    
+	    <a href="index.html">
+	       <span class="glyphicon glyphicon-user"></span> Julien Chiquet</a>
+	  </li>
+	  
+	  <li>
+	    
+	    <a href="research.html">
+	      <span class="glyphicon glyphicon-stats"></span> Research
+	    </a>
+	  </li>
+	  
+	  <li>
+	    
+	    <a href="publications.html">
+	      <span class="glyphicon glyphicon-list"></span> Publications 
+	    </a>
+	  </li>
+	  
+	  <li>
+	    
+	    <a href="code.html">
+	      <span class="glyphicon glyphicon-list"></span> Code
+	    </a>
+	  </li>
+	  
+	  <li class="dropdown">
+	    
+	    <a class="dropdown-toggle" data-toggle="dropdown" href="teachings.html">
+	      <span class="glyphicon glyphicon-pencil"></span> Teachings <span class="caret"></span>
+	      <ul class="dropdown-menu">
+		<li><a href="http://github.com/jchiquet/CourseAdvancedR">Dauphine - Advanced R</a></li>
+		<li><a href="teachings_ensai_networks.html">ENSAI - Networks</a></li>
+		<li><a href="teachings_ensai_regularization.html">ENSAI - régularisation</a></li>
+		<li><a href="teachings_M1MINT_Reg.html">Ensiie - Regularized regression </a></li>
+		<li><a href="teachings_L3BI_ISV51.html">L3BI - Introduction to R</a></li>
+	      </ul>
+	    </a>
+	  </li>
+	  
+	  <li class="dropdown">
+	    
+	    <a class="dropdown-toggle" data-toggle="dropdown" href="summer_schools.html">
+	      <span class="glyphicon glyphicon-pencil"></span> Summer schools <span class="caret"></span>
+	      <ul class="dropdown-menu">
+		<li><a href="http://github.com/jchiquet/JC2BIM18">(JC)2BIM</a></li>
+		<li><a href="exposome.html">Exposome Advanced</a></li>
+		<li><a href="bioinfo_angers.html">Summer School Angers</a></li>
+		<li><a href="bioinfo_ips2.html">Summer School SPSS</a></li>
+	      </ul>
+	    </a>
+	  </li>
+	</ul>
+	<ul class="nav navbar-nav pull-right">
+	  <li><a href="https://github.com/jchiquet"><i class="fa fa-github"></i>&nbsp;jchiquet</a></li>
+          <li><a href="http://scholar.google.fr/citations?user=FM2gRsYAAAAJ&amp;hl=en"><img width="16" src="img/gscholar.ico" />&nbsp;Scholar</a></li>
+          <li><a href="https://stateofther.github.io/"><img width="16" src="img/phare.ico" />&nbsp;StateOfTheR</a></li>
+	</ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+<!-- </header> -->
+
+    
+    <!-- Begin page content -->
+    <div class="container">
+      <div class="page-header">
+         <h1>Projet Modélisation</h1> 	
+      </div>
+      <div class="bs-callout bs-callout-warning"> <span class="glyphicon glyphicon-warning-sign"></span> 
+This page written in French is out of date, yet it contains some
+materials and links that might be interesting for students
+</div>
+
+<h3 id="le-sujet-et-les-données">Le sujet et les données</h3>
+
+<p>Choisir librement un jeu de données adapté à la régression linéaire
+multivarié et qui contienne au moins une dizaine de prédicteurs, par
+exemple</p>
+
+<ul>
+  <li>sur le <a href="http://archive.ics.uci.edu/ml/datasets.html
+format=&amp;task=&amp;att=&amp;area=&amp;numAtt=&amp;numIns=&amp;type=&amp;sort=taskDown&amp;view=table">dépôt Machine-Learning
+UCI</a>
+parmi les données multivariées (‘Data type : Multivariate’)
+destinées à un problème de régression (‘Default Task : Regression’),
+    <ul>
+      <li>parmi des données du package <code>faraway</code> de <code>R</code>, * à la page
+<a href="http://www-stat.stanford.edu/~tibs/ElemStatLearn/">http://www-stat.stanford.edu/~tibs/ElemStatLearn/</a>,</li>
+      <li>etc.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Traiter le jeu de données choisi à l’aide d’un modèle linéaire
+multivarié. Utiliser diverses méthodes de sélection de variable
+(stepwise, forward/backward selection) et de régression biaisées
+(ridge/Lasso/etc) pour proposer un modèle qui vous semblera
+adéquate. Évaluer l’erreur de prédiction commise (avec validation
+croisée, ensemble test/apprentissage). Vous pourrez comparer vos
+modèles avec celui des moindres carrés quand cela est possible, pour
+lequel les techniques habituelles adaptées au modèle linéaire
+(bootstrap, régression robuste, analyse des résidus, etc.) peuvent
+être envisagées.</p>
+
+<p>Pour chacun des jeux de données, vous commencerez par une étude de
+statistiques descriptives : posez-vous des questions sur les données,
+en trouvez des pistes à l’aide d’histogrammes, de nuages de points,
+boîtes à moustaches, moyennes, variances, etc. Si vous choisissez
+d’ôter des données, recomposer l’échantillon, cela peut être une bonne
+idée, mais justifiez-le !</p>
+
+<h3 id="étude-des-données-prostate">Étude des données prostate</h3>
+
+<p>Vous pourrez vous faire les dents sur les données prostates afin de
+tester la validité des scripts <code>R</code> implémentés. Nous allons
+retrouver les résultats du livre <em>The Elements of Statistical
+Learning - 2nd Edition</em> en testant les modèles sur les données de
+cancer de la prostate.</p>
+
+<ul>
+  <li><a href="doc/teachings/ensiie/prostate.rda">Le fichier de données</a> contient 3
+variables : une matrice de prédicteurs ‘‘x’’, une matrice de
+réponses ‘‘y’’ et un vecteur ‘‘set’’ indiquant l’appartenance à
+l’ensemble de d’apprentissage.</li>
+  <li><a href="doc/teachings/ensiie/functions_mpr.r">Mon fichier de fonctions</a> pourrait vous être utile</li>
+  <li><a href="doc/teachings/ensiie/functions_cv_mpr.r">Mon fichier de fonctions</a>
+pour la validation croisée (à compléter par vous pour d’autres
+méthodes que le Lasso et la ridge).</li>
+</ul>
+
+<h4 id="les-moindres-carrés-ordinaires">Les moindres carrés ordinaires</h4>
+
+<p><a href="doc/teachings/ensiie/ols.pdf">Résolution commentée</a></p>
+
+<p>Nous dérivons l’estimateur des moindres carrés, son biais, sa variance
+et mettons en place le test d’hypothèse fondé sur le Z-score pour
+décider de la nullité d’un paramètre. Un script <code>R</code> complet et
+commenté implémente ces résultats.</p>
+
+<h4 id="la-régression-ridge">La régression ridge</h4>
+
+<p><a href="doc/teachings/ensiie/ridge.pdf">Quelques notes sur la régression ridge</a></p>
+
+<p>Nous dérivons l’estimateur de la régression <em>ridge</em>, qui pénalise la
+taille des coefficients à estimer, réduisant donc la variance mais
+augmentant le biais par rapport au moindres carrés.</p>
+
+<h4 id="les-méthodes-de-régularisation-en-norme-1">Les méthodes de régularisation en norme 1</h4>
+
+<p><a href="doc/teachings/ensiie/l1_reg.pdf">Présentation du Lasso et de ses dérivées</a></p>
+
+<p>Nous présentons les critères du Lasso, de l’elastic-net, du
+group-lasso et de l’adaptive Lasso. Nous montrons comment les calculer
+en pratique sous <code>R</code>. On étudie le problème des données
+<code>prostate</code>.</p>
+
+<p>Sous <code>R</code>, ces problèmes peuvent être résolus à l’aide des packages
+<code>lars</code>, <code>glmnet</code> et <code>grplasso</code>.</p>
+
+<h4 id="validation-croisée-et-choix-de-paramètres">Validation croisée et choix de paramètres</h4>
+
+<p><a href="doc/teachings/ensiie/cv_l1.pdf">Présentation de la validation croisée pour le choix de lambda</a></p>
+
+<p>Nous présentons la validation croisée comme estimation de l’erreur de
+prédiction. Nous montrons comment l’appliquer au choix du paramètre de
+pénalisation dans les méthodes ridge et Lasso. Ceci se généralise
+facilement aux autres méthodes étudiées.</p>
+
+<h3 id="bibliographie">Bibliographie</h3>
+
+<h4 id="modèle-linéaire-avec-r">Modèle linéaire avec R</h4>
+
+<p>Un <a href="http://cran.r-project.org/doc/contrib/Faraway-PRA.pdf">livre dévolu à la pratique de la régression sous
+R</a>.</p>
+
+<h4 id="apprentisssage-statistique">Apprentisssage Statistique</h4>
+
+<p>Un <a href="http://www-stat.stanford.edu/~tibs/ElemStatLearn/index.html">livre de
+référence</a>
+disponible <em>gratuitement</em> au format PDF (à voir en particulier: les
+chapitres 3 et 7 pour la régression linéaire pénalisée et la
+validation croisée)</p>
+
+<h4 id="larticle-fondateur-du-lasso">L’article fondateur du Lasso</h4>
+
+<p>Tibshirani, R. (1996), Regression shrinkage an selection via the Lasso, <em>Journal of the Royal Statistical Society</em>, vol. 58, pp 267–288, <a href="http://www-stat.stanford.edu/~tibs/lasso/lasso.pdf/">preprint</a>,</p>
+
+<h4 id="algorithme-de-résolution">Algorithme de résolution</h4>
+
+<p>Un article répertoriant les méthodes de type Lasso, group-Lasso,
+Elastic-Net, etc. pouvant être résolu via un algorithme très simple de
+descente de coordonnées (le lecture des premières pages est suffisante
+pour vous).</p>
+
+<p>Friedman, J. and Hastie, T. and Hoefling, H. and Tibshirani,
+R. (2007), Pathwise coordinate optimization, vol. 1, pp 302–332,
+<em>Annals of Applied Statistics</em>,
+<a href="http://www-stat.stanford.edu/~hastie/Papers/pathwise.pdf">preprint</a></p>
+
+<h3 id="documentation-r">Documentation R</h3>
+
+<ul>
+  <li><a href="http://stat.genopole.cnrs.fr/dw/~jchiquet/fr/softwares">L’introduction officielle</a></li>
+  <li><a href="http://cran.r-project.org/doc/contrib/Paradis-rdebuts_fr.pdf">Une bonne introduction pour commencer pratiquement</a></li>
+  <li><a href="doc/teachings/commandes_r.pdf">Une ref-card</a> des commandes les plus classiques</li>
+</ul>
+
+<h3 id="quelques-packages-r-utiles">Quelques packages R utiles</h3>
+
+<ul>
+  <li>Le paquet <a href="http://cran.r-project.org/web/packages/faraway/">faraway</a> avec les données du livre de Faraway.</li>
+  <li>Le paquet <a href="http://cran.r-project.org/web/packages/lars/">lars</a> permet de calculer efficacement la solution du Lasso pour toutes les valeurs du paramètre de pénalisation lambda.</li>
+  <li>Le paquet <a href="http://cran.r-project.org/web/packages/glmnet/">glmnet</a> permet de calculer la solution du Lasso et de l’elastic Net pour une grille de valeurs de lambda</li>
+  <li>Le paquet <a href="http://cran.r-project.org/web/packages/grplasso/">grplasso</a> permet de calculer la solution du group-Lasso pour une grille de valeurs de lambda.</li>
+  <li>Le paquet <a href="/simone">simone</a> permet d’inférence des réseaux biologiques avec diverse méthodes en particulier avec la sélection de voisinage Lasso.</li>
+  <li>Le paquet <a href="http://cran.r-project.org/web/packages/bootstrap/index.html">bootsptrap</a> implémente diverses méthodes de validation croisée (leave-one-out, jack-knife, bootstrap).</li>
+</ul>
+
+ <!-- content of the page -->
+    </div>
+
+    <!-- footer -->
+    <footer class="site-footer">
+
+  <div class="container">
+      <p class="pull-left text-muted">Last update: October 2018</p>
+  </div>
+
+</footer>
+
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
+
+    
+  </body>
+</html>

@@ -1,0 +1,33 @@
+markdown: kramdown
+highlighter: true
+name: "Julien Chiquet"
+lastupdate: "Last update: October 2018"
+baseurl: ""
+url: "http://julien.chiquet.cremeriefamily.info"
+require: 'csl'
+github: jchiquet
+sotr: StateOfTheR
+
+sass:
+  load_paths:
+    - _sass                             # original sass
+    - bower_components/foundation/scss  # bootstrap
+
+scholar:
+  style: assets/bibliography/mystyle.csl
+  locale: en
+
+  sort_by: year
+  order: descending
+
+  source: ../mybib
+  bibliography_template: bib
+  bibliography_class: bibliography
+
+  replace_strings: true
+
+  details_dir:    bibliography
+  details_layout: bibtex.html
+  details_link:   Details
+
+  query: "@*"

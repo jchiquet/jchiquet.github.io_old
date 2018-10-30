@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Julien Chiquet">
+  <meta name="description" content="Julien Chiquet's website">
+  
+
+  <title>Exposome Advance - Biological Network Inference with Sparse Gaussian Graphical Models</title>
+  <meta name="description" content="">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://julien.chiquet.cremeriefamily.info/exposome.html">
+  <link rel="alternate" type="application/rss+xml" title="" href="http://julien.chiquet.cremeriefamily.info/feed.xml">
+
+  <link rel="stylesheet" href="/css/bs-callout.css">
+  <link rel="stylesheet" href="/css/bibliography.css">
+  <link rel="stylesheet" href="/css/sticky-footer-navbar.css">
+  <link rel="stylesheet" href="/css/morecss.css">
+  
+  <!--mathjax-->
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+</head>
+
+  
+  <!-- body -->
+  i<body>
+
+    <!-- <header class="site-header"> -->
+  <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="collapse navbar-collapse">
+	<ul class="nav navbar-nav">
+	  
+	  <li>
+	    
+	    <a href="index.html">
+	       <span class="glyphicon glyphicon-user"></span> Julien Chiquet</a>
+	  </li>
+	  
+	  <li>
+	    
+	    <a href="research.html">
+	      <span class="glyphicon glyphicon-stats"></span> Research
+	    </a>
+	  </li>
+	  
+	  <li>
+	    
+	    <a href="publications.html">
+	      <span class="glyphicon glyphicon-list"></span> Publications 
+	    </a>
+	  </li>
+	  
+	  <li>
+	    
+	    <a href="code.html">
+	      <span class="glyphicon glyphicon-list"></span> Code
+	    </a>
+	  </li>
+	  
+	  <li class="dropdown">
+	    
+	    <a class="dropdown-toggle" data-toggle="dropdown" href="teachings.html">
+	      <span class="glyphicon glyphicon-pencil"></span> Teachings <span class="caret"></span>
+	      <ul class="dropdown-menu">
+		<li><a href="http://github.com/jchiquet/CourseAdvancedR">Dauphine - Advanced R</a></li>
+		<li><a href="teachings_ensai_networks.html">ENSAI - Networks</a></li>
+		<li><a href="teachings_ensai_regularization.html">ENSAI - régularisation</a></li>
+		<li><a href="teachings_M1MINT_Reg.html">Ensiie - Regularized regression </a></li>
+		<li><a href="teachings_L3BI_ISV51.html">L3BI - Introduction to R</a></li>
+	      </ul>
+	    </a>
+	  </li>
+	  
+	  <li class="dropdown">
+	    
+	    <a class="dropdown-toggle" data-toggle="dropdown" href="summer_schools.html">
+	      <span class="glyphicon glyphicon-pencil"></span> Summer schools <span class="caret"></span>
+	      <ul class="dropdown-menu">
+		<li><a href="http://github.com/jchiquet/JC2BIM18">(JC)2BIM</a></li>
+		<li><a href="exposome.html">Exposome Advanced</a></li>
+		<li><a href="bioinfo_angers.html">Summer School Angers</a></li>
+		<li><a href="bioinfo_ips2.html">Summer School SPSS</a></li>
+	      </ul>
+	    </a>
+	  </li>
+	</ul>
+	<ul class="nav navbar-nav pull-right">
+	  <li><a href="https://github.com/jchiquet"><i class="fa fa-github"></i>&nbsp;jchiquet</a></li>
+          <li><a href="http://scholar.google.fr/citations?user=FM2gRsYAAAAJ&amp;hl=en"><img width="16" src="img/gscholar.ico" />&nbsp;Scholar</a></li>
+          <li><a href="https://stateofther.github.io/"><img width="16" src="img/phare.ico" />&nbsp;StateOfTheR</a></li>
+	</ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+<!-- </header> -->
+
+    
+    <!-- Begin page content -->
+    <div class="container">
+      <div class="page-header">
+         <h1>Exposome Advance - Biological Network Inference with Sparse Gaussian Graphical Models</h1> 	
+      </div>
+      <div class="bs-callout bs-callout-info">
+<a href="doc/teachings/exposome/transcriptomics_networks_inference.html"> Tutorial on preliminary analysis of exposome transcriptomics data</a>
+</div>
+
+<h3 id="-contents"><span class="glyphicon glyphicon-calendar"></span> Contents</h3>
+
+<p>This session aims to provide an overview of sparse Gaussian graphical
+models and their used for inferring networks from transcriptomic data.</p>
+
+<p>During the practical, we will illustrate these methods on two
+transcriptomic data set by means of R. We will also perform some small
+numerical experiments to understand the notion of partial correlation
+and what those GGM represent from the statistical point of view.</p>
+
+<h3 id="-documents"><span class="glyphicon glyphicon-download-alt"></span> Documents</h3>
+
+<ul>
+  <li><a href="doc/teachings/exposome/slides.pdf">slides</a>, <a href="doc/teachings/exposome/surf64.pdf">short version!</a> for the Surf64 summer school</li>
+</ul>
+
+<h4 id="london-practical">London practical</h4>
+
+<ul>
+  <li><a href="doc/teachings/exposome/td_exposome_sheet.pdf">practical sheet in PDF</a> or <a href="doc/teachings/exposome/td_exposome_sheet.html">practical sheet in html</a></li>
+  <li><a href="doc/teachings/exposome/td_exposome_correction.pdf">practical correction sheet</a> or <a href="doc/teachings/exposome/td_exposome_correction.html">practical sheet in html</a> <em>Use with parcimony and only when necessary</em></li>
+  <li><a href="data/data_school.zip">zip file with all the data sets</a></li>
+</ul>
+
+<h4 id="anglet-tutorial">Anglet tutorial</h4>
+
+<ul>
+  <li><a href="doc/teachings/exposome/transcriptomics_networks_inference.html">Tutorial on preliminary analysis of exposome transcriptomics data</a></li>
+</ul>
+
+<h3 id="-external-resources"><span class="glyphicon glyphicon-download-alt"></span> External resources</h3>
+
+<ul>
+  <li><a href="https://github.com/jchiquet/CourseStatNetwork">Course on Statistical Network Analysis</a></li>
+  <li><a href="https://github.com/jchiquet/CourseAdvancedR">Course on Advanced R</a></li>
+</ul>
+
+<h3 id="-technical-point"><span class="glyphicon glyphicon-download-alt"></span> Technical point</h3>
+
+<h4 id="r-version-and-packages">R version and Packages</h4>
+
+<p>You need a recent R version installed with the following packages (including their dependencies)</p>
+
+<ul>
+  <li>tidyverse, huge, igraph, QUIC, stabs, limma (bioconductor)</li>
+</ul>
+
+<h4 id="a-couple-of-r-functions">A couple of R functions</h4>
+
+<ul>
+  <li><a href="doc/teachings/exposome/external_functions.R">functions for computing ROC curves + AUC + multiple plots with ggplot2</a></li>
+</ul>
+ <!-- content of the page -->
+    </div>
+
+    <!-- footer -->
+    <footer class="site-footer">
+
+  <div class="container">
+      <p class="pull-left text-muted">Last update: October 2018</p>
+  </div>
+
+</footer>
+
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
+
+    
+  </body>
+</html>

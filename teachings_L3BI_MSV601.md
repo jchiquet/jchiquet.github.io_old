@@ -1,0 +1,121 @@
+---
+layout: default
+title: MSV601 - Introduction au modèle linéaire
+---
+
+### <span class="glyphicon glyphicon-calendar">Planning prévisionnel 
+
+<table class="table table-striped">
+    <tbody>
+
+    <thead>
+      <tr>
+        <th>#</th>
+        <th><span class="glyphicon glyphicon-time"></span> date</th>
+	<th><span class="glyphicon glyphicon-th"></span> séance</th>
+        <th><span class="glyphicon glyphicon-tasks"></span> cours</th>
+	<th><span class="glyphicon glyphicon-cutlery"></span> fiche TD/TP</th>
+      </tr>
+    </thead>
+
+      <tr>
+        <td>1</td>
+        <td>29/01</td>
+        <td>3h de cours/TD</td>
+        <td>Introduction et rappels de statistiques</td>
+     </tr>
+
+    <tr>
+        <td>2</td>
+        <td>05/02</td>
+        <td>3h cours/TD</td>
+        <td>Rappels sur la démarche de test statistique</td>
+	<td><a href="doc/teachings/msv601/MSV601_TD1.pdf">TD 1 - test sur les paramètres d'une gaussienne</a></td>
+     </tr>
+
+    <tr>
+        <td>3</td>
+        <td>10/02</td>
+        <td>4h de cours/TD</td>
+        <td>Comparaison de deux populations (1) </td>
+	<td><a href="doc/teachings/msv601/MSV601_TP1.pdf">TP 1 - tests de Student/Welch, une/deux population, apparié </a></td>
+     </tr>
+
+     <tr>
+        <td>4</td>
+        <td>12/02</td>
+        <td>3h cours/TD</td>
+        <td>Comparaison de deux populations (2) </td>
+	<td><a href="doc/teachings/msv601/MSV601_TD2.pdf">TD 2 - tests de comparaison de deux populations</a></td>
+     </tr>
+
+     <tr>
+        <td>5</td>
+        <td>17/02</td>
+        <td>4h de cours/TD</td>
+        <td>Analyse de la variance à 1 facteur - ANOVA 1 (1)</td>
+	<td><a href="doc/teachings/msv601/MSV601_TD3.pdf">TD 3 - exemple d'ANOVA 1</a></td>
+     </tr>
+
+    <tr>
+        <td>6</td>
+        <td>19/02</td>
+        <td>3h cours/TD</td>
+        <td>Analyse de la variance à 1 facteur - ANOVA 1 (2)</td>
+	<td><a href="doc/teachings/msv601/MSV601_TP2.pdf">TP 2 - analyse de traitements contre l'asthme</a> - <a href="doc/teachings/msv601/asthme.dat">données</a></td>
+     </tr>
+
+    <tr>
+        <td>7</td>
+        <td>04/03</td>
+        <td>devoir surveillé</td>
+        <td colspan="2"><em>pas de td</em></td>
+     </tr>
+
+    <tr>
+        <td>8</td>
+        <td>11/03</td>
+        <td>3h cours/TD</td>
+        <td>Analyse de la variance à 2 facteurs - ANOVA 2 (1) </td>
+	<td><a href="doc/teachings/msv601/MSV601_TD4.pdf">TD 4 - exemple d'ANOVA 2</a></td>
+     </tr>
+
+    <tr>
+        <td>9</td>
+        <td>18/03</td>
+        <td>3h cours/TD</td>
+        <td>Analyse de la variance à 2 facteurs - ANOVA 2 (2) </td>
+	<td><a href="doc/teachings/msv601/MSV601_TP3.pdf">TP 3 - exemples d'ANOVA 2</a> - <a href="doc/teachings/msv601/colza.dat">données</a></td>
+     </tr>
+
+    <tr>
+        <td>10</td>
+        <td>25/03</td>
+        <td>3h cours/TD</td>
+        <td>Régression linéaire simple (1)</td>
+	<td><a href="doc/teachings/msv601/MSV601_TD5.pdf">TD 5 - régression linéaire simple</a></td>
+     </tr>
+
+    <tr>
+        <td>11</td>
+        <td>01/04</td>
+        <td>3h cours/TD</td>
+        <td>Régression linéaire simple (2)</td>
+	<td><a href="doc/teachings/msv601/MSV601_TP4.pdf">TP 4 - régression linéaire simple</a> - <a href="reglin/Brochet.txt">données</a></td>
+     </tr>
+
+   </tbody>
+</table>
+
+
+### <span class="glyphicon glyphicon-download-alt"></span> Support de cours 
+
+Le contenu des slides est partiel et synthétique. Ce support est
+complété par les démonstrations, remarques et disgressions faites aux
+tableaux lors des séances.
+
+* jeu de slides 0: [Introduction](doc/teachings/msv601/MSV601_slides_intro.pdf)
+* jeu de slides 1: [Rappels de Statistique](doc/teachings/msv601/MSV601_slides_rappels.pdf)
+* jeu de slides 2: [Tests statistique: démarche, population(s) gaussienne(s)](doc/teachings/msv601/MSV601_slides_tests.pdf)
+* jeu de slides 3: [Analyse de la variance 1 et 2](doc/teachings/msv601/MSV601_slides_anova.pdf)
+* jeu de slides 4: [Régression linéaire simple](doc/teachings/msv601/MSV601_slides_reglin.pdf)
