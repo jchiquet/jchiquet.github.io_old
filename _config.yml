@@ -3,7 +3,7 @@ highlighter: true
 name: "Julien Chiquet"
 lastupdate: "Last update: October 2018"
 baseurl: ""
-url: "http://julien.chiquet.cremeriefamily.info"
+url: "https://jchiquet.github.io"
 require: 'csl'
 github: jchiquet
 sotr: StateOfTheR
@@ -20,7 +20,7 @@ scholar:
   sort_by: year
   order: descending
 
-  source: ../mybib
+  source: /home/jchiquet/Dropbox/mybib
   bibliography_template: bib
   bibliography_class: bibliography
 
