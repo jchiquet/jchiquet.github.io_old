@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>PLNmodels: a case study</title>
+    <title>PLNmodels</title>
     <meta charset="utf-8">
-    <meta name="author" content="PLN team" />
+    <meta name="author" content="J. Chiquet, M. Mariadassou, S. Robin   INRA - Applied Mathematics and Informatics Division   Last update 26 March, 2019" />
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/remark-css/metropolis.css" rel="stylesheet" />
     <link href="libs/remark-css/metropolis-fonts.css" rel="stylesheet" />
@@ -22,12 +22,14 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# PLNmodels: a case study
-## The mollusk data set
-### PLN team
-### 2019/01 (last update: 2019-02-01)
+# PLNmodels
+## A collection of Poisson lognormal models <br/> for multivariate analysis of count data
+### J. Chiquet, M. Mariadassou, S. Robin<br /><br /> <small>INRA - Applied Mathematics and Informatics Division</small> <br /> <small>Last update 26 March, 2019</small>
+### <br/><a href="https://jchiquet.github.io/PLNmodels" class="uri">https://jchiquet.github.io/PLNmodels</a>
 
 ---
+
+
 
 
 
@@ -39,29 +41,32 @@ class: inverse, center, middle
 ---
 # Requirements
 
-## Package PLNmodels and dependencies
+## Package PLNmodels
 
-For this tutorial, you may preferably install the last release of **PLNmodels** from GitHub &lt;sup&gt;1&lt;/sup&gt;:
+You can install the last release of **PLNmodels** from GitHub:
 
 
 ```r
-devtools::install_github("jchiquet/PLNmodels@v7.0.1")
+devtools::install_github("jchiquet/PLNmodels")
 ```
 
-More details are available at https://jchiquet.github.io/PLNmodels/ about 
+## Dependencies
 
-- installing the required dependencies 
-    - a system version of `nlopt`, 
-    - `CRAN` and `Bioconductor` R packages
-- OS specificities (Windows binaries)
+Make sure the following CRAN and BioConductor packages are installed:
 
-## Rstudio IDE
 
-You are recommended to use the [RStudio IDE](https://www.rstudio.com/products/rstudio/) and `R 3.5.2`.
+```r
+required_CRAN &lt;- c("R6", "glassoFast", "Matrix", "Rcpp", "RcppArmadillo",
+                   "nloptr", "igraph", "grid", "gridExtra", "dplyr",
+                   "tidyr", "ggplot2", "corrplot", "magrittr", "devtools")
+required_BioC &lt;- c("phyloseq", "biomformat")
 
-- Create a new `R` Markdown document from the menu `File -&gt; New File -&gt; R Markdown`
+not_installed_CRAN &lt;- setdiff(required_CRAN, rownames(installed.packages()))
+if (length(not_installed_CRAN) &gt; 0) install.packages(not_installed_CRAN)
 
-- Click the `Knit` button to compile it or (best) use  Ctrl/⌘ + ⇧ + K
+not_installed_BioC &lt;- setdiff(required_BioC, rownames(installed.packages()))
+if (length(not_installed_BioC) &gt; 0) BiocManager::install(not_installed_BioC)
+```
 
 ---
 
@@ -78,7 +83,7 @@ packageVersion("PLNmodels")
 ```
 
 ```
-## [1] '0.7.0.1'
+## [1] '0.9.1.9000'
 ```
 
 ## Finding help and documentation
@@ -95,49 +100,39 @@ And do not forget `?`/`??` in the `R` console.
 
 ---
 
-# Some additional useful packages
-
-The tools provided by the two following libraries will be useful during our analyses.
-
-
-```r
-library(tidyverse) # data manipulation
-```
-
-```
-## ── Attaching packages ──────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
-```
-
-```
-## ✔ ggplot2 3.1.0     ✔ purrr   0.3.0
-## ✔ tibble  2.0.1     ✔ dplyr   0.7.8
-## ✔ tidyr   0.8.2     ✔ stringr 1.3.1
-## ✔ readr   1.3.1     ✔ forcats 0.3.0
-```
-
-```
-## ── Conflicts ─────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()
-```
-
-```r
-library(corrplot)  # plot of covariance/correlation matrices
-```
-
-```
-## corrplot 0.84 loaded
-```
-
----
-
 class: inverse, center, middle
 
-# The Mollusk data set &lt;br/&gt; insights and data preparation
+# 'Mollusk' &lt;br/&gt; A motivating companion data set &lt;br/&gt; .small[See Richardot-Coulet, Chessel, and Bournaud [RCB86]]
+
 
 ---
 
-# Data overview
+# Generic form of data sets
+  
+Routinely gathered in ecology/microbiology/genomics 
+
+## Data tables
+
+  - .important[Abundances]: read counts of species/transcripts `\(j\)` in sample `\(i\)`
+  - .important[Covariates]: value of environmental variable `\(k\)` in sample `\(i\)`
+  - .important[Offsets]: sampling effort for species/transcripts `\(j\)` in sample `\(i\)`
+
+## Need for multivariate analysis
+
+  - exhibit .important[patterns of diversity] &lt;br/&gt;
+      `\(\rightsquigarrow\)` summarize the information  (PCA, clustering, `\(\dots\)`)
+  - understand .important[between-species interactions] &lt;br /&gt;
+      `\(\rightsquigarrow\)` 'network' inference (variable/covariance selection)
+  - correct for technical and .important[confounding effects] &lt;br/&gt;
+      `\(\rightsquigarrow\)` account for covariables and sampling effort
+
+`\(\rightsquigarrow\)` need a generic framework to _model dependences between count variables_
+
+---
+
+# 'mollusk' data set overview
+
+&lt;br/&gt;
 
 The `mollusk` variable is loaded by the function `data()`. 
 
@@ -161,11 +156,9 @@ str(mollusk, max.level = 1)
 ##  $ Covariate:'data.frame':	163 obs. of  4 variables:
 ```
 
+&lt;br/&gt;
+
 Have a look at the help page with `?mollusk` to get additional details.
-
-### Reference
-
-.small[Richardot-Coulet, M., Chessel D. and Bournaud M. (1986) Typological value of the benthos of old beds of a large river. Methodological approach. Archiv fùr Hydrobiologie, 107, 363–383.]
 
 ---
 
@@ -178,8 +171,8 @@ mollusk$Abundance %&gt;%
   head() %&gt;% DT::datatable(fillContainer = FALSE)
 ```
 
-<div id="htmlwidget-f89cfdd82be5fbb3fed4" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f89cfdd82be5fbb3fed4">{"x":{"filter":"none","fillContainer":false,"data":[["1","2","3","4","5","6"],[2,2,1,13,19,54],[0,0,0,0,0,0],[2,0,0,0,4,3],[0,0,0,0,0,0],[0,2,1,0,0,1],[0,0,0,0,0,0],[0,0,0,0,0,0],[22,93,39,1,2,2],[0,0,0,0,0,0],[0,0,0,0,0,0]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Bit<\/th>\n      <th>Vap<\/th>\n      <th>Vac<\/th>\n      <th>Gac<\/th>\n      <th>Raa<\/th>\n      <th>Rap<\/th>\n      <th>Lit<\/th>\n      <th>Pha<\/th>\n      <th>Phf<\/th>\n      <th>Plc<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6,7,8,9,10]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-16dcbbccef0d5a46016a" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-16dcbbccef0d5a46016a">{"x":{"filter":"none","fillContainer":false,"data":[["1","2","3","4","5","6"],[2,2,1,13,19,54],[0,0,0,0,0,0],[2,0,0,0,4,3],[0,0,0,0,0,0],[0,2,1,0,0,1],[0,0,0,0,0,0],[0,0,0,0,0,0],[22,93,39,1,2,2],[0,0,0,0,0,0],[0,0,0,0,0,0]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Bit<\/th>\n      <th>Vap<\/th>\n      <th>Vac<\/th>\n      <th>Gac<\/th>\n      <th>Raa<\/th>\n      <th>Rap<\/th>\n      <th>Lit<\/th>\n      <th>Pha<\/th>\n      <th>Phf<\/th>\n      <th>Plc<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6,7,8,9,10]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 
 ---
 
@@ -200,7 +193,7 @@ t(log(1 + mollusk$Abundance)) %&gt;%
 
 ---
 
-# Covariates
+# Covariates and offsets
 
 The three first covariates are categorical. The fourth one is numerical.
 
@@ -225,6 +218,8 @@ summary(mollusk$Covariate)
 ##  (Other)  :24
 ```
 
+`\(\rightsquigarrow\)` `method` and `duration` are candidate for modeling sampling effort as offsets
+
 ---
 
 # Data preparation
@@ -233,8 +228,6 @@ In **PLNmodels**, data are handled into a single data frame that put together
 1. the counts,
 1. the potential covariates,
 1. the offset that may be used in the models.
-
---
 
 .important[_Important!_]
 
@@ -250,7 +243,8 @@ The helping function `prepare_data` allows you to avoid taking care of cumbersom
 prepare_data(
   counts     = , # your count table
   covariates = , # your covariates
-  offset     = , # the method to compute offset
+  offset     = , # the method to compute offsets 
+                 # or a predefined matrix/vector of offset
 )
 ```
 
@@ -300,36 +294,135 @@ str(mollusc, max.level = 1)
 
 class: inverse, center, middle
 
-# Multivariate Poisson Lognormal models with PLN
+# Multivariate Poisson lognormal models &lt;br/&gt; statistical framework
+
+---
+
+# Models for multivariate count data
+
+## If we were in a Gaussian world...
+
+The .important[general linear model] [MKB79] would be appropriate! For each sample `\(i = 1,\dots,n\)`, 
+
+`$$\underbrace{\mathbf{Y}_i}_{\text{abundances}} =  \underbrace{\mathbf{X}_i \boldsymbol\Theta}_{\text{covariates}} + \underbrace{\mathbf{O}_i}_{\text{sampling effort}} + \boldsymbol\varepsilon_i, \quad \boldsymbol\varepsilon_i \sim \mathcal{N}(\mathbf{0}_p, \underbrace{\boldsymbol\Sigma}_{\text{between-species dependencies}})$$`
+
+null covariance `\(\Leftrightarrow\)` independence `\(\rightsquigarrow\)` uncorrelated species/transcripts do not interact
+
+`\(\rightsquigarrow\)` This model gives birth to Principal Component Analysis,  Discriminant Analysis, Gaussian Graphical Models and many others `\(\dots\)`
+
+--
+
+## With count data...
+
+There is no generic model for multivariate counts
+
+  - Data transformation (log, `\(\sqrt{}\)`) : quick and dirty
+  - Non-Gaussian multivariate distributions [Ino+17]: do not scale to data dimension yet
+  - .important[Latent variable models]: interaction occur in a latent (unobserved) layer
 
 ---
 
 # The Poisson Lognormal model (PLN)
 
-The PLN model is a multivariate generalized linear model, where 
+The PLN model [AH89] is a .important[multivariate generalized linear model], where 
 
 - the counts `\(\mathbf{Y}_i\)` are the response variables
 - the main effect is due to a linear combination of the covariates `\(\mathbf{x}_i\)`
-- a vector&lt;sup&gt;1&lt;/sup&gt; of offsets `\(\mathbf{o}_i\)` can be specified for each sample.
+- a vector of offsets `\(\mathbf{o}_i\)` can be specified for each sample.
 
 $$
 \mathbf{Y}_i | \mathbf{Z}_i \sim \mathcal{P}\left(\exp\{\mathbf{Z}_i\}\right), \qquad \mathbf{Z}_i \sim \mathcal{N}({\mathbf{o}_i + \mathbf{x}_i^\top\boldsymbol\Theta},\boldsymbol\Sigma), \\
 $$
-The unkwown parameters are 
-- `\(\boldsymbol\Theta\)`, the matrix of regression parameters
-- `\(\boldsymbol\Sigma\)`, the variance-covariance matrix
 
-.footnote[
-[1] Single values are also accepted and automatically recycled to full length-vectors.
+.pull-left[The unkwown parameters are 
+- `\(\boldsymbol\Theta\)`, the regression parameters
+- `\(\boldsymbol\Sigma\)`, the variance-covariance matrix
+]
+
+.pull-right[
+PLN has some expected properties
+- over-dispersion
+- covariance with arbitrary signs
 ]
 
 --
 
-When all individuals `\(i=1,\dots,n\)` are stacked together, the data matrices required by the model are
-
+When all individuals `\(i=1,\dots,n\)` are together, the data matrices required are
   - the `\(n\times p\)` matrix of counts  `\(\mathbf{Y}\)`
   - the `\(n\times d\)` matrix of design  `\(\mathbf{X}\)`
   - the `\(n\times p\)` matrix of offsets `\(\mathbf{O}\)`
+
+---
+# Geometrical view
+
+![](mollusk_files/figure-html/PLN geometry-1.png)&lt;!-- --&gt;
+
+---
+# .small[Inference: latent model but intractable EM]
+  
+## Aim of the inference
+
+  - estimate `\(\theta = (\boldsymbol\Theta, \boldsymbol\Sigma)\)` 
+  - predict the `\(\mathbf{Z}_i\)`
+
+## Maximum likelihood
+
+PLN is an incomplete data model: try EM
+`$$\log p_\theta(\mathbf{Y}) = \mathbb{E}_p [\log p_\theta(\mathbf{Y}, \mathbf{Z}) \,|\, \mathbf{Y}] + \mathcal{H}[p_\theta(\mathbf{Z}\,|\,\mathbf{Y})]$$` 
+
+EM requires to evaluate (some moments of) `\(p_\theta(\mathbf{Z} \,|\,  \mathbf{Y})\)`, but there is no close form!
+
+## Solutions
+
+  - [AH89] resort on numerical integration; [Kar05] Monte-Carlo integration
+  - Several heuristics, not always well motivated, found in the literature...
+  - .important[Variational approach] [WJ08]: use a proxy of `\(p_\theta(\mathbf{Z}\,|\,\mathbf{Y})\)`.
+
+---
+# Variational approach to generalize EM
+
+## Principle 
+
+Choose a convenient class of distribution `\(\mathcal{Q}\)`
+
+`$$\mathcal{Q} = \Big\{\tilde{p}: \quad \tilde{p}(\mathbf{Z}) = \prod_i \tilde{p}_i(\mathbf{Z}_i), \quad \tilde{p}_i(\mathbf{Z}_i) = \mathcal{N}(\mathbf{Z}_i; \tilde{m}_i, \tilde{s}_i) \Big\}$$`
+
+and maximize the following lower bound
+
+`$$J(\theta, \tilde{p}) = \log p_\theta(\mathbf{Y}) - KL[\tilde{p}_\theta (\mathbf{Z}) ||  p_\theta(\mathbf{Z} | \mathbf{Y})]  = \mathbb{E}_{\tilde{p}} [\log p_\theta(\mathbf{Y}, \mathbf{Z})] + \mathcal{H}[\tilde{p}(\mathbf{Z})]$$`
+
+## Variational EM
+
+  - VE step: find the optimal `\(\tilde{p}\)`: 
+`$$\tilde{p}^h = \arg \max J(\theta^h, \tilde{p}) = \arg\min_{\tilde{p} \in \mathcal{Q}} KL[\tilde{p}(\mathbf{Z}) \,||\, p_{\theta^h}(\mathbf{Z}\,|\,\mathbf{Y})]$$`
+  - M step: update `\(\hat{\theta}^h\)`
+`$$\theta^h = \arg\max J(\theta, \tilde{p}^h) = \arg\max_{\theta} \mathbb{E}_{\tilde{p}} [\log p_{\theta}(\mathbf{Y}, \mathbf{Z})]$$`
+
+---
+# .small[Application to the optimization of PLN models]
+  
+## Property of PLN variational approximation
+
+The lower bound `\(J(\theta, \tilde{p})\)` is bi-concave, i.e.
+  - wrt `\(\tilde{p} = (\tilde{\mathbf{M}}, \tilde{\mathbf{S}})\)` for given `\(\theta\)` 
+  - wrt `\(\theta = (\boldsymbol\Sigma, \boldsymbol\Theta)\)` for given `\(\tilde{p}\)` 
+but .important[not jointly concave] in general.
+
+## Optimization
+
+projected gradient ascent for the complete set of parameters&lt;sup&gt;1&lt;/sup&gt; `\((\tilde{\mathbf{M}}, \tilde{\mathbf{S}}, \theta)\)`
+
+  - **algorithm**: conservative convex separable approximations Svanberg [Sva02] &lt;br/&gt;
+  - **implementation**: `NLopt` nonlinear-optimization library Johnson [Joh11] &lt;br/&gt;
+  - **initialization**: LM after log-trasnformation applied independently on each variables + concatenation of the regression coefficients + Pearson residuals
+
+.footnote[[1] Alternating between varitional and model parameters is useless here]
+
+---
+
+class: inverse, center, middle
+
+# Multivariate Poisson Regression with PLN
 
 ---
 
@@ -378,14 +471,14 @@ M00_mollusc
 ```
 ## A multivariate Poisson Lognormal fit with full covariance model.
 ## ==================================================================
-##  degrees_freedom    loglik      BIC       ICL R_squared
-##              560 -3634.067 -5053.36 -13800.65 0.9788567
+##  nb_param    loglik       BIC       ICL R_squared
+##       560 -3634.142 -5053.435 -13799.86     0.979
 ## ==================================================================
-## * Useful fields 
-##     $model_par, $latent, $var_par, $optim_par 
-##     $loglik, $BIC, $ICL, $loglik_vec, $degrees_freedom, $criteria 
+## * Useful fields
+##     $model_par, $latent, $var_par, $optim_par
+##     $loglik, $BIC, $ICL, $loglik_vec, $nb_param, $criteria
 ## * Useful S3 methods
-##     print(), coef(), vcov(), fitted(), predict(), standard_error(), fisher()
+##     print(), coef(), sigma(), vcov(), fitted(), predict(), standard_error()
 ```
 
 ---
@@ -412,12 +505,12 @@ coef(M00_mollusc) %&gt;% head() %&gt;% t() %&gt;% knitr::kable(format = "html")
 &lt;tbody&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; (Intercept) &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.5910263 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -5.108065 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.3348884 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -2.190636 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -2.518615 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -7.283385 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.5969453 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -5.104882 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.339746 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -2.199856 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -2.506255 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -7.293509 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -430,7 +523,7 @@ M00_mollusc$criteria %&gt;% knitr::kable(format = "html")
 &lt;table&gt;
  &lt;thead&gt;
   &lt;tr&gt;
-   &lt;th style="text-align:right;"&gt; degrees_freedom &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; nb_param &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; loglik &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; BIC &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; ICL &lt;/th&gt;
@@ -440,10 +533,10 @@ M00_mollusc$criteria %&gt;% knitr::kable(format = "html")
 &lt;tbody&gt;
   &lt;tr&gt;
    &lt;td style="text-align:right;"&gt; 560 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -3634.067 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -5053.36 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -13800.65 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.9788567 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -3634.142 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -5053.435 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -13799.86 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.9788534 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -458,7 +551,7 @@ Try accessing some other fields!
 
 ```r
 corrplot(
-  vcov(M00_mollusc),
+  sigma(M00_mollusc),
   is.corr = FALSE, tl.cex = .5
 )
 ```
@@ -470,7 +563,7 @@ corrplot(
 
 ```r
 corrplot(
-  cov2cor(vcov(M00_mollusc)),
+  cov2cor(sigma(M00_mollusc)),
   tl.cex = .5
 )
 ```
@@ -503,7 +596,7 @@ rbind(
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; degrees_freedom &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; nb_param &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; loglik &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; BIC &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; ICL &lt;/th&gt;
@@ -514,31 +607,31 @@ rbind(
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; M00 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 560 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -3634.067 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -5053.360 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -13800.65 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.9788567 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -3634.142 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -5053.435 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -13799.86 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.9788534 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; M01 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 560 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -3593.202 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -5012.495 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -13927.45 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.9648182 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -3593.162 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -5012.455 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -13924.75 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.9648186 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; M02 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 560 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -3651.196 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -5070.489 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -13908.51 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.9795608 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -3651.095 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -5070.389 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -13910.62 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.9795718 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 
-_What do think?_
+_What do you think?_
 
 ---
 
@@ -580,7 +673,7 @@ There is a clear gain in introducing this covariate in the model:
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; degrees_freedom &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; nb_param &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; loglik &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; BIC &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; ICL &lt;/th&gt;
@@ -591,18 +684,18 @@ There is a clear gain in introducing this covariate in the model:
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; M01 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 560 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -3593.202 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -5012.495 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -13927.45 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.9648182 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -3593.162 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -5012.455 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -13924.75 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.9648186 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; M11 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 784 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -2899.770 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -4886.781 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -11479.57 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.8920388 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -2899.791 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -4886.801 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -11484.80 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.8920362 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -636,7 +729,7 @@ M21_mollusc &lt;- PLN(Abundance ~ 0 + site_new + offset(log(Offset)), mollusc)
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; degrees_freedom &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; nb_param &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; loglik &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; BIC &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; ICL &lt;/th&gt;
@@ -647,18 +740,18 @@ M21_mollusc &lt;- PLN(Abundance ~ 0 + site_new + offset(log(Offset)), mollusc)
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; M11 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 784 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -2899.770 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -4886.781 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -11479.57 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.8920388 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -2899.791 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -4886.801 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -11484.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.8920362 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; M21 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 688 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -3019.726 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -4763.429 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; -11974.22 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.9096246 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -3019.723 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -4763.426 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -11982.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.9096319 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -669,12 +762,12 @@ M21_mollusc &lt;- PLN(Abundance ~ 0 + site_new + offset(log(Offset)), mollusc)
 
 class: inverse, center, middle
 
-# Dimension reduction and vizualisation with PLNPCA
+# Dimension reduction and vizualisation with PLNPCA &lt;br/&gt; .small[See Chiquet, Mariadassou, and Robin [CMR18]]
 
 ---
 # Poisson Lognormal model for PCA
 
-The PLN-PCA model implemented in *PLNmodels* can viewed as a PLN model with an additional rank constraint on the covariance matrix `\(\boldsymbol\Sigma\)` such that `\(\mathrm{rank}(\boldsymbol\Sigma)= q\)`:
+The PLN-PCA [CMR18] model implemented in *PLNmodels* can viewed as a PLN model with an additional rank constraint on the covariance matrix `\(\boldsymbol\Sigma\)` such that `\(\mathrm{rank}(\boldsymbol\Sigma)= q\)`:
 
 `$$\begin{array}{rcl}
   \text{latent space } &amp;   \mathbf{Z}_i \sim \mathcal{N}(\mathbf{o}_i + \mathbf{x}_i^\top\boldsymbol\Theta,\boldsymbol\Sigma), &amp; \boldsymbol\Sigma = \mathbf{B}\mathbf{B}^\top \\
@@ -684,9 +777,16 @@ The PLN-PCA model implemented in *PLNmodels* can viewed as a PLN model with an a
 The dimension of the latent space `\(q\)` corresponds to the number of axes in the PCA or, in other words, to the rank of `\(\boldsymbol\Sigma = \mathbf{B}\mathbf{B}^\intercal\)`.
 
 
-The unkwown parameters are 
-- `\(\boldsymbol\Theta\)`, the matrix of regression parameters
-- `\(\mathbf{B}\)`, the matrix of _rescaled loadings_
+The unkwown parameters are  `\(\boldsymbol\Theta\)` and `\(\mathbf{B}\)`, the matrix of .important[_rescaled loadings_]
+
+--
+
+### Features
+
+  - **Optimization**: _"Similar"_ variational framework (with different gradients)
+  - **Model selection**: variational BIC/ICL
+      - `\(\tilde{\text{BIC}}_q = J(\theta, \tilde{p}) - \frac12 p (d + q) \log(n)\)`,  `\(\tilde{\text{ICL}}_q = \tilde{\text{BIC}}_q - \mathcal{H}(\tilde{p})\)`
+  - **Vizualization:** PCA on the expected latent position `\(\mathbb{E}_{\tilde{p}}(\mathbf{Z}_i) = \mathbf{M}\hat{\mathbf{B}}^\top\)`
 
 ---
 # The PLNPCA function
@@ -740,9 +840,9 @@ PCA_offset
 ## --------------------------------------------------------
 ##  Task: Principal Component Analysis
 ## ========================================================
-##  - Ranks considered: from 1 to 8 
-##  - Best model (regarding BIC): rank = 6 - R2 = 0.93 
-##  - Best model (regarding ICL): rank = 5 - R2 = 0.91
+##  - Ranks considered: from 1 to 8
+##  - Best model (greater BIC): rank = 6 - R2 = 0.93
+##  - Best model (greater ICL): rank = 4 - R2 = 0.87
 ```
 
 `PLNPCAfamily` has three methods: `plot`, `getModel`, `getBestModel`&lt;sup&gt;1&lt;/sup&gt; 
@@ -779,16 +879,16 @@ The extracted object has class `PLNPCAfit`. It inherits from the `PLNfit` class 
 ```
 ## Poisson Lognormal with rank constrained for PCA (rank = 6)
 ## ==================================================================
-##  degrees_freedom    loglik       BIC       ICL R_squared
-##              224 -3498.244 -4065.961 -4242.693 0.9302682
+##  nb_param    loglik       BIC       ICL R_squared
+##       224 -3509.055 -4076.773 -4252.794      0.93
 ## ==================================================================
-## * Useful fields 
-##     $model_par, $latent, $var_par, $optim_par 
-##     $loglik, $BIC, $ICL, $loglik_vec, $degrees_freedom, $criteria 
+## * Useful fields
+##     $model_par, $latent, $var_par, $optim_par
+##     $loglik, $BIC, $ICL, $loglik_vec, $nb_param, $criteria
 ## * Useful S3 methods
-##     print(), coef(), vcov(), fitted(), predict(), standard_error(), fisher() 
+##     print(), coef(), sigma(), vcov(), fitted(), predict(), standard_error()
 ## * Additional fields for PCA
-##     $percent_var, $corr_circle, $scores, $rotation 
+##     $percent_var, $corr_circle, $scores, $rotation
 ## * Additional S3 methods for PCA
 ##     plot.PLNPCAfit()
 ```
@@ -802,7 +902,7 @@ Inheritance allows you to rely on the same methods as with `PLN`:
 
 ```r
 corrplot(
-  cov2cor(vcov(M01_mollusc)),
+  cov2cor(sigma(M01_mollusc)),
   tl.cex = .5
 )
 ```
@@ -814,7 +914,7 @@ corrplot(
 
 ```r
 corrplot(
-  cov2cor(vcov(PCA_offset_BIC)),
+  cov2cor(sigma(PCA_offset_BIC)),
   tl.cex = .5
 )
 ```
@@ -908,8 +1008,31 @@ $$ g_{ik} = 1 \Leftrightarrow g_i = k $$
 The unkwown parameters are 
 - `\(\boldsymbol\Theta\)`, the matrix of regression parameters
 - `\(\mathbf{M}\)`, the matrix containing the `\(K\)` vectors of group means
-- `\(\boldsymbol{\Sigma}\)`, the mvariance-covariance matrix
+- `\(\boldsymbol{\Sigma}\)`, the variance-covariance matrix
 
+---
+# Geometrical view
+
+![](mollusk_files/figure-html/PLN_geom_lda_no_offset-1.png)&lt;!-- --&gt;
+
+---
+# PLNLDA: principles
+
+## Inference
+
+1. Adjust a "standard" PLN with `\(\mathbf{X} \rightarrow (\mathbf{X}, \mathbf{G})\)`,  `\(\boldsymbol\Theta \rightarrow (\boldsymbol\Theta, \mathbf{U})\)`
+
+2. Use estimate `\(\boldsymbol\Sigma, \mathbf{U}\)` and `\(\boldsymbol\Theta\)` and `\(\tilde{\mathbf{Z}}_i\)` to compute
+`$$\hat{\boldsymbol\Theta} = \frac1{K-1} \sum_k n_k (\hat{\boldsymbol\mu}_k - \hat{\boldsymbol\mu}_\bullet) (\hat{\boldsymbol\mu}_k - \hat{\boldsymbol\mu}_\bullet)^\intercal$$`
+  - Compute first `\(K-1\)` eigenvectors of `\(\hat{\boldsymbol\Sigma}^{-1} \hat{\boldsymbol\Theta} = \mathbf{P}^\top \Lambda \mathbf{P}\)` (discriminant axes)
+
+## Features
+
+  - **Graphical representation**:  `\(\tilde{\mathbf{Z}} \mathbf{P} \Lambda^{1/2}\)`, the coordinates along the discriminant axes
+  - **Prediction**: For each group, 
+    - Compute (variational) likelihood `\(p_k = P(\mathbf{Y}_{\text{new}} | \hat{\boldsymbol\Sigma}, \hat{\boldsymbol\Theta}, \hat{\boldsymbol\mu}_k)\)`
+    - Assign `\(i\)` to group with highest posterior probability `\(\pi_k \propto \frac{n_k p_k}{n}\)`
+  
 ---
 # The PLNLDA function
 
@@ -934,16 +1057,15 @@ PLNLDA(formula = , # mandatory
 
 # LDA of the mollusc data set: site (I)
 
-Let us try a PLN-LDA on the `site_new` variable:
+
+
+Let us try a PLN-LDA on the `site` variable&lt;sup&gt;1&lt;/sup&gt;:
 
 
 ```r
 LDA_site &lt;- PLNLDA(
-  Abundance ~ 1 + offset(log(Offset)), mollusc, 
-    grouping = mollusc$site_new)
+  Abundance ~ offset(log(Offset)), data = mollusc, grouping = site_new)
 ```
-
-.important[Note] The intercept (`1 + `) is automatically removed from the formula to ensure that coefficients and groups can be interpreted as excepted.
 
 --
 
@@ -953,16 +1075,16 @@ Contrary to PLNPCA, PLNLDA does not need no model selection, and has the same co
 ```
 ## Linear Discriminant Analysis for Poisson Lognormal distribution
 ## ==================================================================
-##  degrees_freedom    loglik       BIC       ICL R_squared
-##              288 -3019.726 -3749.648 -10960.44 0.9096246
+##  nb_param    loglik       BIC       ICL R_squared
+##       288 -3019.723 -3749.645 -10968.52      0.91
 ## ==================================================================
-## * Useful fields 
-##     $model_par, $latent, $var_par, $optim_par 
-##     $loglik, $BIC, $ICL, $loglik_vec, $degrees_freedom, $criteria 
+## * Useful fields
+##     $model_par, $latent, $var_par, $optim_par
+##     $loglik, $BIC, $ICL, $loglik_vec, $nb_param, $criteria
 ## * Useful S3 methods
-##     print(), coef(), vcov(), fitted(), predict(), standard_error(), fisher() 
+##     print(), coef(), sigma(), vcov(), fitted(), predict(), standard_error()
 ## * Additional fields for LDA
-##     $percent_var, $corr_map, $scores, $group_means 
+##     $percent_var, $corr_map, $scores, $group_means
 ## * Additional S3 methods for LDA
 ##     plot.PLNLDAfit(), predict.PLNLDAfit()
 ```
@@ -974,7 +1096,7 @@ The plot function is useful to quickly view if some species separates well the g
 
 
 ```r
-plot(LDA_site, nb_axes = 2)
+plot(LDA_site)
 ```
 
 &lt;img src="mollusk_files/figure-html/PLNLDA site plot-1.png" style="display: block; margin: auto;" /&gt;
@@ -987,10 +1109,10 @@ PLN-LDA works also very well for season, with or with correction of the `site ef
 
 ```r
 LDA_season1 &lt;- PLNLDA(Abundance ~ 1 + offset(log(Offset)), 
-  mollusc, grouping = mollusc$season)
+  data = mollusc, grouping = season)
 
 LDA_season2 &lt;- PLNLDA(Abundance ~ 1 + site_new + offset(log(Offset)), 
-  mollusc, grouping = mollusc$season)
+  data = mollusc, grouping = season)
 ```
 
 .pull-left[
@@ -1029,7 +1151,7 @@ table(predictions, mollusc$season)
 
 class: center, middle, inverse
 
-# Sparse structure estimation with PLNnetwork
+# Sparse structure estimation with PLNnetwork &lt;br/&gt; .small[See Chiquet, Mariadassou, and Robin [CMR18]]
 
 ---
 
@@ -1079,7 +1201,7 @@ PLNnetwork(formula = ,  # mandatory
 `\(\rightsquigarrow\)` The algorithm finds a penalty inducing an empty network and goes along the penalties levels, adding edges stepwisely.
 
 ---
-# Controlling the range of visited networks
+# .small[Controlling the range of visited networks]
 
 The range and size of the vector `penalties` may be controlled via `control_init`. For example,
 
@@ -1145,7 +1267,7 @@ Let us plot the residuals covariance matrices, after regularization of its inver
 
 ```r
 net1 &lt;- getBestModel(networks_mollusc)
-corrplot(vcov(net1),
+corrplot(sigma(net1),
   cl.pos = "n", is.corr = FALSE)
 ```
 
@@ -1156,7 +1278,7 @@ corrplot(vcov(net1),
 
 ```r
 net2 &lt;- getBestModel(networks_mollusc_site)
-corrplot(vcov(net2),
+corrplot(sigma(net2),
   cl.pos = "n", is.corr = FALSE)
 ```
 
@@ -1206,6 +1328,69 @@ In `getBestModel`, when "StARS" is requested, stabiltiy selection is performed i
 ```r
 net3 &lt;- getBestModel(networks_mollusc_site, "StARS") 
 ```
+
+---
+# Conclusion
+
+## Summary
+
+  - PLN = generic model for multivariate count data analysis
+  - Allows for covariates
+  - Flexible modeling of the covariance structure
+  - Efficient VEM algorithm
+
+&lt;br /&gt;
+
+## Extensions
+
+- Other covariance structures (spatial, time series, ...)
+- Mixture model in the latent space
+- Confidence interval and tests for the regular PLN
+- Other optimization (composite likelihood, MCMC) starting from the variational solution
+
+---
+# References
+
+Aitchison, J. and C. Ho (1989). "The multivariate Poisson-log
+normal distribution". In: _Biometrika_ 76.4, pp. 643-653.
+
+Chiquet, J, M. Mariadassou and S. Robin (2018a). "Variational
+inference for probabilistic Poisson PCA". In: _The Annals of
+Applied Statistics_ 12, pp. 2674-2698. URL:
+[http://dx.doi.org/10.1214/18-AOAS1177](http://dx.doi.org/10.1214/18-AOAS1177).
+
+Chiquet, J, M. Mariadassou and S. Robin (2018b). "Variational
+inference for sparse network reconstruction from count data". In:
+_arXiv preprint_. URL:
+[https://arxiv.org/abs/1806.03120](https://arxiv.org/abs/1806.03120).
+
+Inouye, D. I, E. Yang, G. I. Allen, et al. (2017). "A review of
+multivariate distributions for count data derived from the Poisson
+distribution". In: _Wiley Interdisciplinary Reviews: Computational
+Statistics_ 9.3.
+
+Johnson, S. G. (2011). _The NLopt nonlinear-optimization package_.
+URL:
+[http://ab-initio.mit.edu/nlopt](http://ab-initio.mit.edu/nlopt).
+
+Karlis, D. (2005). "EM algorithm for mixed Poisson and other
+discrete distributions". In: _Astin bulletin_ 35.01, pp. 3-24.
+
+Mardia, K, J. Kent and J. Bibby (1979). _Multivariate analysis_.
+Academic press.
+
+Richardot-Coulet, M, D. Chessel and M. Bournaud (1986).
+"Typological value of the benthos of old beds of a large river.
+Methodological approach." In: _Archiv fur Hydrobiologie.
+Stuttgart_ 107.3, pp. 363-383.
+
+Svanberg, K. (2002). "A class of globally convergent optimization
+methods based on conservative convex separable approximations".
+In: _SIAM journal on optimization_ 12.2, pp. 555-573.
+
+Wainwright, M. J. and M. I. Jordan (2008). "Graphical Models,
+Exponential Families, and Variational Inference". In: _Found.
+Trends Mach. Learn._ 1.1-2, pp. 1-305.
     </textarea>
 <script src="libs/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
