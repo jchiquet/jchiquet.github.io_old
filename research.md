@@ -21,6 +21,7 @@ title: Research activities
 
 ### Main current grants
 
+* ANR project **SingleStatOmics** (2019--2022): [web page](http://anr-singlestatomics.pages.math.cnrs.fr) (leaders: F. Picard, O. Gandrillon, B.Michel, J. Chiquet, participation = 12 months)
 * ANR project **EcoNet** (2019--2022): *Advanced statistical modelling of ecological networks* (leader: C. Matias, participation = 8 months)
 * ANR project **NGB** (2018--2021): *Next  Generation  Biomonitoring of change in  ecosystems structure and function* (leader: D. Bohan, participation = 4.8 months)
 * Inra MP MEM: KineTicks (2018 -- 2019) *Network and modelling analyses to  describe  the dynamics  of  Ixodes  ricinus microbiome  and  its influence in pathogen evolution* (leader: T. Pollet, B. LAroche, J. Chiquet, participation 4 months)
