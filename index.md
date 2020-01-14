@@ -7,9 +7,9 @@ title: About me
   <div class="col-md-8">
 
     <div class="bs-callout bs-callout-warning"> I am an
-    	  INRA researcher in statistics at <a
-    	  href="https://www6.inra.fr/mia-paris">UMR AgroParisTech/INRA
-    	  MIA Paris</a> since February 2016. Before that, I was a member of the <a
+    	  INRAE Senior Researcher in statistics at <a
+    	  href="https://www6.inrae.fr/mia-paris">UMR 518 Université Paris-Saclay/AgroParisTech/INRAE
+    	  </a> since February 2016. Before that, I was a member of the <a
     href="http://www.math-evry.cnrs.fr/">Laboratory of Mathematics and
     Modeling of Évry</a>.
     </div>
@@ -18,11 +18,11 @@ title: About me
     My research mainly focuses on <strong>Statistical
     learning</strong> (sparse methods, clustering, graphical models, latent variable models...) applied to the analysis of data from life
     sciences, more particularly <strong>omics data</strong>. More on this can be found in my
-    <span class="glyphicon glyphicon-pencil"></span><a href="https://tel.archives-ouvertes.fr/tel-01288976/">Habilitation à diriger les recherches</a>.
+    <span class="glyphicon glyphicon-pencil"></span><a href="doc_hdr_chiquet.pdf/">Habilitation à diriger les recherches</a>.
     </div>
 
     <div class="bs-callout bs-callout-info">
-    <a href="doc/cv_en_201904.pdf"> Here is a full academic CV (April 2019)</a>
+    <a href="doc/cv_en_201910.pdf"> Here is a full academic CV (January 2020)</a>
     </div>
     </div>
 
@@ -36,12 +36,12 @@ Contact information
 <div class="row"> 
   <div class="col-md-4">
 <address>
-  <strong>UMR MIA-Paris</strong><br />
-  AgroParisTech, INRA, Université Paris-Saclay<br/>
+  <strong>UMR NUMM-MIA Paris</strong><br />
+  Université Paris-Saclay, AgroParisTech, INRAE<br/>
   16 rue Claude Bernard<br>
   75231 Paris Cedex 05, France <br><br>
-  <span class="glyphicon glyphicon-phone"></span> +33(0)1 44 08 xx xx <br>
-  <span class="glyphicon glyphicon-envelope"></span> <a href="mailto:julien [dot] chiquet [at] agroparistech [dot] fr">julien [dot] chiquet [at] inra [dot] fr</a>
+  <span class="glyphicon glyphicon-phone"></span> +33(0)1 44 08 18 39 <br>
+  <span class="glyphicon glyphicon-envelope"></span> <a href="mailto:julien [dot] chiquet [at] inrae [dot] fr">julien [dot] chiquet [at] inrae [dot] fr</a>
   <div itemscope itemtype="https://schema.org/Person"><a itemprop="sameAs" content="https://orcid.org/0000-0002-3629-3429" href="https://orcid.org/0000-0002-3629-3429" target="orcid.widget" rel="noopener noreferrer" style="vertical-align:top;"><img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" style="width:1em;margin-right:.5em;" alt="ORCID iD icon">orcid.org/0000-0002-3629-3429</a></div>
 </address>
 </div>
