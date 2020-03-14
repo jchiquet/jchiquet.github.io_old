@@ -6,12 +6,13 @@ title: About me
 <div class="row"> 
   <div class="col-md-8">
 
-    <div class="bs-callout bs-callout-warning"> I am an
-    	  INRAE Senior Researcher in statistics at <a
-    	  href="https://www6.inrae.fr/mia-paris">UMR 518 Université Paris-Saclay/AgroParisTech/INRAE
-    	  </a> since February 2016. Before that, I was a member of the <a
-    href="http://www.math-evry.cnrs.fr/">Laboratory of Mathematics and
-    Modeling of Évry</a>.
+    <div class="bs-callout bs-callout-warning"> I am an INRAE Senior
+    	  Researcher in statistics at <a
+    	  href="https://www6.inrae.fr/mia-paris">UMR 518 Université
+    	  Paris-Saclay/AgroParisTech/INRAE, where I
+    	  am responsible for the team <a
+    	  href="https://www6.inrae.fr/mia-paris/Equipes/Statistique-Genome">
+    	  Statistics &amp; Genome</a>
     </div>
 
     <div class="bs-callout bs-callout-info">
@@ -36,7 +37,7 @@ Contact information
 <div class="row"> 
   <div class="col-md-4">
 <address>
-  <strong>UMR NUMM-MIA Paris</strong><br />
+  <strong>MIA Paris</strong><br />
   Université Paris-Saclay, AgroParisTech, INRAE<br/>
   16 rue Claude Bernard<br>
   75231 Paris Cedex 05, France <br><br>
