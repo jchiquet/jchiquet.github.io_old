@@ -23,7 +23,7 @@ title: About me
     </div>
 
     <div class="bs-callout bs-callout-info">
-    <a href="doc/cv_en_201910.pdf"> Here is a full academic CV (January 2020)</a>
+    <a href="doc/cv_en_202001.pdf"> Here is a full academic CV (January 2020)</a>
     </div>
     </div>
 
