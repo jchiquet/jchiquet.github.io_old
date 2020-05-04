@@ -9,7 +9,7 @@ title: About me
     <div class="bs-callout bs-callout-warning"> I am an INRAE Senior
     	  Researcher in statistics at <a
     	  href="https://www6.inrae.fr/mia-paris">UMR 518 Université
-    	  Paris-Saclay/AgroParisTech/INRAE, where I
+    	  Paris-Saclay/AgroParisTech/INRAE</a>, where I
     	  am responsible for the team <a
     	  href="https://www6.inrae.fr/mia-paris/Equipes/Statistique-Genome">
     	  Statistics &amp; Genome</a>
@@ -19,16 +19,15 @@ title: About me
     My research mainly focuses on <strong>Statistical
     learning</strong> (sparse methods, clustering, graphical models, latent variable models...) applied to the analysis of data from life
     sciences, more particularly <strong>omics data</strong>. More on this can be found in my
-    <span class="glyphicon glyphicon-pencil"></span><a href="doc_hdr_chiquet.pdf/">Habilitation à diriger les recherches</a>.
+    <span class="glyphicon glyphicon-pencil"></span><a href="doc/hdr_chiquet.pdf">Habilitation à diriger les recherches</a>.
     </div>
 
     <div class="bs-callout bs-callout-info">
-    <a href="doc/cv_en_202001.pdf"> Here is a full academic CV (January 2020)</a>
+    <a href="doc/cv_en_202004.pdf"> Here is a full academic CV (April 2020)</a>
     </div>
     </div>
-
+    
     <div class="col-md-3"><img alt="en_vacances" src="img/en_vacances.jpg" /> </div>
-     
 </div>
 
 Contact information
@@ -46,6 +45,5 @@ Contact information
   <div itemscope itemtype="https://schema.org/Person"><a itemprop="sameAs" content="https://orcid.org/0000-0002-3629-3429" href="https://orcid.org/0000-0002-3629-3429" target="orcid.widget" rel="noopener noreferrer" style="vertical-align:top;"><img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" style="width:1em;margin-right:.5em;" alt="ORCID iD icon">orcid.org/0000-0002-3629-3429</a></div>
 </address>
 </div>
-
 </div>
 
