@@ -1,7 +1,7 @@
 markdown: kramdown
 highlighter: true
 name: "Julien Chiquet"
-lastupdate: "Last update: March 2019"
+lastupdate: "Last update: May 2020"
 baseurl: ""
 url: "https://jchiquet.github.io"
 require: 'csl'
