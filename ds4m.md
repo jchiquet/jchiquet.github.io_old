@@ -16,8 +16,8 @@ We will adopt a geometrical point of view and provide several exercice to train.
 ### <span class="glyphicon glyphicon-download-alt"></span> Documents 
 
 * [slides](ds4m/DimensionReductionPCA.pdf)
-* [tutorial](ds4m/tutorial_PCA_budget.html) + [budget data set](ds4m/budget.csv)
-* [labs](ds4m/labs_PCA.html) +  [SNP data](ds4m/SNP.RData) + [MNIST sample](ds4m/mnist_sample.csv)
+* [tutorial](ds4m/tutorial_PCA_budget.html) + [budget data set](ds4m/budget.csv) + [Rmd source](ds4m/tutorial_PCA_budget.Rmd)
+* [labs](ds4m/labs_PCA.html) +  [SNP data](ds4m/SNP.RData) + [MNIST sample](ds4m/mnist_sample.csv) + [Rmd source](ds4m/labs_PCA.Rmd)
 
 ### Code, R version and Packages 
 
