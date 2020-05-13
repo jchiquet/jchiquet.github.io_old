@@ -11,13 +11,15 @@ Introduction to Dimension Reduction
 The goal of this day is to give an introduction to fundamental methods
 in dimension reduction, in particular, principal component analysis.
 
-We will adopt a geometrical point of view and provide several exercice to train.
+We will adopt a geometrical point of view and provide several exercices to train.
 
-### <span class="glyphicon glyphicon-download-alt"></span> Documents 
+Zoom + Pad, remotely due to COVID-19 crisis! (first time for me)
 
-* [slides](ds4m/DimensionReductionPCA.pdf)
-* [tutorial](ds4m/tutorial_PCA_budget.html) + [budget data set](ds4m/budget.csv) + [Rmd source](ds4m/tutorial_PCA_budget.Rmd)
-* [labs](ds4m/labs_PCA.html) +  [SNP data](ds4m/SNP.RData) + [MNIST sample](ds4m/mnist_sample.csv) + [Rmd source](ds4m/labs_PCA.Rmd)
+### <span class="glyphicon glyphicon-download-alt"></span> Material
+
+* [slides](ds4m/DimensionReductionPCA.pdf), [slides + annotation, more exactly scribbling](ds4m/DimensionReductionPCA.pdf) + [bonus sketch](ds4m:example_sketch.jpg)
+* [tutorial notebook](ds4m/tutorial_PCA_budget.html) + [budget data set](ds4m/budget.csv) + [Rmd source](ds4m/tutorial_PCA_budget.Rmd)
+* [labs notebook](ds4m/labs_PCA.html) +  [SNP data](ds4m/SNP.RData) + [MNIST sample](ds4m/mnist_sample.csv) + [Rmd source](ds4m/labs_PCA.Rmd)
 
 ### Code, R version and Packages 
 
