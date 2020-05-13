@@ -17,7 +17,7 @@ Zoom + Pad, remotely due to COVID-19 crisis! (first time for me)
 
 ### <span class="glyphicon glyphicon-download-alt"></span> Material
 
-* [slides](ds4m/DimensionReductionPCA.pdf), [slides + annotation, more exactly scribbling](ds4m/DimensionReductionPCA.pdf) + [bonus sketch](ds4m:example_sketch.jpg)
+* [slides](ds4m/DimensionReductionPCA.pdf), [slides + annotation, more exactly scribbling](ds4m/DimensionReductionPCA_annotated.pdf) + [bonus sketch](ds4m/example_sketch.jpg)
 * [tutorial notebook](ds4m/tutorial_PCA_budget.html) + [budget data set](ds4m/budget.csv) + [Rmd source](ds4m/tutorial_PCA_budget.Rmd)
 * [labs notebook](ds4m/labs_PCA.html) +  [SNP data](ds4m/SNP.RData) + [MNIST sample](ds4m/mnist_sample.csv) + [Rmd source](ds4m/labs_PCA.Rmd)
 
