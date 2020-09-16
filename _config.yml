@@ -1,12 +1,13 @@
 markdown: kramdown
 highlighter: true
 name: "Julien Chiquet"
-lastupdate: "Last update: May 2020"
+lastupdate: "Last update: September 2020"
 baseurl: ""
 url: "https://jchiquet.github.io"
 require: 'csl'
 github: jchiquet
 sotr: StateOfTheR
+exclude: [ds4m, ds4m.md]
 
 sass:
   load_paths:
