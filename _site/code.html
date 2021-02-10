@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Julien Chiquet">
+  <meta name="description" content="Julien Chiquet's website">
+  
+
+  <title>Code and packages</title>
+  <meta name="description" content="">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://jchiquet.github.io/code.html">
+  <link rel="alternate" type="application/rss+xml" title="" href="https://jchiquet.github.io/feed.xml">
+
+  <link rel="stylesheet" href="/css/bs-callout.css">
+  <link rel="stylesheet" href="/css/bibliography.css">
+  <link rel="stylesheet" href="/css/sticky-footer-navbar.css">
+  <link rel="stylesheet" href="/css/morecss.css">
+  
+  <!--mathjax-->
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+</head>
+
+  
+  <!-- body -->
+  i<body>
+
+    <!-- <header class="site-header"> -->
+  <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="collapse navbar-collapse">
+	<ul class="nav navbar-nav">
+	  
+	  <li>
+	    
+	    <a href="index.html">
+	       <span class="glyphicon glyphicon-user"></span> Julien Chiquet</a>
+	  </li>
+	  
+	  <li>
+	    
+	    <a href="research.html">
+	      <span class="glyphicon glyphicon-stats"></span> Research
+	    </a>
+	  </li>
+	  
+	  <li>
+	    
+	    <a href="publications.html">
+	      <span class="glyphicon glyphicon-list"></span> Publications 
+	    </a>
+	  </li>
+	  
+	  <li>
+	    
+	    <a href="code.html">
+	      <span class="glyphicon glyphicon-list"></span> Code
+	    </a>
+	  </li>
+	  
+	  <li class="dropdown">
+	    
+	    <a class="dropdown-toggle" data-toggle="dropdown" href="teachings.html">
+	      <span class="glyphicon glyphicon-pencil"></span> Teachings <span class="caret"></span>
+	      <ul class="dropdown-menu">
+<!--		<li><a href="ds4m.html">DS4M certificate</a></li>-->
+		<li><a href="https://jchiquet.github.io/MAP573/">X - MAP573</a></li>
+		<li><a href="https://github.com/jchiquet/CourseAdvancedR">Dauphine - Advanced R</a></li>
+		<li><a href="https://github.com/jchiquet/CourseStatNetwork">ENSAI - Networks</a></li>
+		<li><a href="https://github.com/jchiquet/CourseRegLinearRegression">ENSAI - régularisation</a></li>
+		<li><a href="teachings_L3BI_ISV51.html">L3BI - Introduction to R</a></li>
+		<li><a href="http://github.com/jchiquet/JC2BIM18">(JC)2BIM</a></li>
+	      </ul>
+	    </a>
+	  </li>
+	</ul>
+	<ul class="nav navbar-nav pull-right">
+	  <li><a href="https://github.com/jchiquet"><i class="fa fa-github"></i>&nbsp;jchiquet</a></li>
+          <li><a href="http://scholar.google.fr/citations?user=FM2gRsYAAAAJ&amp;hl=en"><img width="16" src="img/gscholar.ico" />&nbsp;Scholar</a></li>
+          <li><a href="https://stateofther.github.io/"><img width="16" src="img/phare.ico" />&nbsp;StateOfTheR</a></li>
+	</ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+<!-- </header> -->
+
+    
+    <!-- Begin page content -->
+    <div class="container">
+      <div class="page-header">
+         <h1>Code and packages</h1> 	
+      </div>
+      <p>I spread most of my code as <code>R</code> packages, with underlying routines in
+<code>C/C/++</code> relying on the great
+<a href="http://cran.r-project.org/web/packages/Rcpp/index.html">Rcpp</a> package
+and the outstanding <a href="http://arma.sourceforge.net/">armadillo</a> library.</p>
+
+<p>I am also coding a bit of Python to acces tools like Pytorch or
+Tensorflow.</p>
+
+<p>The main entry point for my published code is my
+<a href="https://github.com/jchiquet/">githubpage</a>.</p>
+
+<h3 id="dedicated-pages">Dedicated pages</h3>
+
+<ul>
+  <li><a href="scoop.html">scoop</a></li>
+</ul>
+
+<h3 id="references">References</h3>
+
+<ol class="bibliography"><li><div class="row"> 
+  <div class="col-md-10"> <span id="sicomore">Guinot F, Szafranski M, Chiquet J, Ambroise C: <b>SIComORe: Selection of Interaction effects in
+                  COmpressed Multiple Omics REpresentation</b>, 2020</span> <br />
+<!-- begin soft/code specific -->
+    
+    
+    <a role="button" class="btn btn-warning btn-xs" href="https://github.com/jchiquet/sicomore-pkg">download</a>
+    
+    
+<!-- end soft/code specific -->
+    
+    
+    
+    
+    
+  </div>
+  
+  <div class="col-md-2">
+    <div class="btn-group">
+      <button class="btn btn-info btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+	BibTeX <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+	<pre>@soft{sicomore,
+  author = {Guinot, F. and Szafranski, M. and Chiquet, J. and Ambroise, C.},
+  title = {SIComORe: Selection of Interaction effects in
+                    COmpressed Multiple Omics REpresentation},
+  howpublished = {\url{https://github.com/jchiquet/sicomore-pkg}},
+  download = {https://github.com/jchiquet/sicomore-pkg},
+  year = {2020}
+}
+</pre>
+      </ul>
+    </div>
+    
+
+  </div>
+</div>
+
+
+</li>
+<li><div class="row"> 
+  <div class="col-md-10"> <span id="univarclust">Gutierrez P, Rigaill G, Chiquet J: <b>Univariate hierarchical clustering at large scale</b>, 2019</span> <br />
+<!-- begin soft/code specific -->
+    
+    
+    <a role="button" class="btn btn-warning btn-xs" href="https://github.com/jchiquet/univarclust">download</a>
+    
+    
+<!-- end soft/code specific -->
+    
+    
+    
+    
+    
+  </div>
+  
+  <div class="col-md-2">
+    <div class="btn-group">
+      <button class="btn btn-info btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+	BibTeX <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+	<pre>@soft{univarclust,
+  author = {Gutierrez, P. and Rigaill, G. and Chiquet, J.},
+  title = {Univariate hierarchical clustering at large scale},
+  howpublished = {\url{https://github.com/jchiquet/univarclust}},
+  download = {https://github.com/jchiquet/univarclust},
+  year = {2019}
+}
+</pre>
+      </ul>
+    </div>
+    
+
+  </div>
+</div>
+
+
+</li>
+<li><div class="row"> 
+  <div class="col-md-10"> <span id="mergetrees">Hulot A, Chiquet J, Rigaill G: <b>A package for fastly merging tree-like objects</b>, 2019</span> <br />
+<!-- begin soft/code specific -->
+    
+    
+    <a role="button" class="btn btn-warning btn-xs" href="https://CRAN.R-project.org/package=mergeTrees">download</a>
+    
+    
+<!-- end soft/code specific -->
+    
+    
+    
+    
+    
+  </div>
+  
+  <div class="col-md-2">
+    <div class="btn-group">
+      <button class="btn btn-info btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+	BibTeX <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+	<pre>@soft{mergetrees,
+  author = {Hulot, A and Chiquet, J. and Rigaill, G.},
+  title = {A package for fastly merging tree-like objects},
+  howpublished = {\url{https://CRAN.R-project.org/package=mergeTrees}},
+  download = {https://CRAN.R-project.org/package=mergeTrees},
+  year = {2019}
+}
+</pre>
+      </ul>
+    </div>
+    
+
+  </div>
+</div>
+
+
+</li>
+<li><div class="row"> 
+  <div class="col-md-10"> <span id="PLNmodels">Chiquet J, Mariadassou M, Robin S: <b>PLNmodels: Poisson lognormal models</b>, 2019</span> <br />
+<!-- begin soft/code specific -->
+    
+    
+    <a role="button" class="btn btn-warning btn-xs" href="https://github.com/jchiquet/PLNmodels">download</a>
+    
+    
+<!-- end soft/code specific -->
+    
+    
+    
+    
+    
+  </div>
+  
+  <div class="col-md-2">
+    <div class="btn-group">
+      <button class="btn btn-info btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+	BibTeX <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+	<pre>@soft{PLNmodels,
+  author = {Chiquet, J. and Mariadassou, M. and Robin, S.},
+  title = {PLNmodels: Poisson lognormal models},
+  howpublished = {\url{https://github.com/jchiquet/PLNmodels}},
+  download = {https://github.com/jchiquet/PLNmodels},
+  year = {2019}
+}
+</pre>
+      </ul>
+    </div>
+    
+
+  </div>
+</div>
+
+
+</li>
+<li><div class="row"> 
+  <div class="col-md-10"> <span id="missSBM">Tabouy T, Barbillon P, Chiquet J: <b>missSBM: handling missing data in the Stochastic Bloc Model</b>, 2019</span> <br />
+<!-- begin soft/code specific -->
+    
+    
+    <a role="button" class="btn btn-warning btn-xs" href="https://CRAN.R-project.org/package=missSBM">download</a>
+    
+    
+<!-- end soft/code specific -->
+    
+    
+    
+    
+    
+  </div>
+  
+  <div class="col-md-2">
+    <div class="btn-group">
+      <button class="btn btn-info btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+	BibTeX <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+	<pre>@soft{missSBM,
+  author = {Tabouy, T and Barbillon, P. and Chiquet, J.},
+  title = {missSBM: handling missing data in the Stochastic Bloc Model},
+  howpublished = {\url{https://CRAN.R-project.org/package=missSBM}},
+  download = {https://CRAN.R-project.org/package=missSBM},
+  year = {2019}
+}
+</pre>
+      </ul>
+    </div>
+    
+
+  </div>
+</div>
+
+
+</li>
+<li><div class="row"> 
+  <div class="col-md-10"> <span id="multivarnet">Chiquet J: <b>multivarnet: R package for inferring
+                  multi-variate/multi-attribute Gaussian graphical
+                  models</b>, 2019</span> <br />
+<!-- begin soft/code specific -->
+    
+    
+    <a role="button" class="btn btn-warning btn-xs" href="https://github.com/jchiquet/multivarNetwork">download</a>
+    
+    
+<!-- end soft/code specific -->
+    
+    
+    
+    
+    
+  </div>
+  
+  <div class="col-md-2">
+    <div class="btn-group">
+      <button class="btn btn-info btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+	BibTeX <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+	<pre>@soft{multivarnet,
+  author = {Chiquet, J.},
+  title = {multivarnet: R package for inferring
+                    multi-variate/multi-attribute Gaussian graphical
+                    models},
+  howpublished = {\url{https://github.com/jchiquet/multivarNetwork}},
+  download = {https://github.com/jchiquet/multivarNetwork},
+  year = {2019}
+}
+</pre>
+      </ul>
+    </div>
+    
+
+  </div>
+</div>
+
+
+</li>
+<li><div class="row"> 
+  <div class="col-md-10"> <span id="aricode">Chiquet J, Dervieux V, Rigaill G: <b>aricode: a package for efficient computations of
+                  standard clustering comparison measures</b>, 2018</span> <br />
+<!-- begin soft/code specific -->
+    
+    
+    <a role="button" class="btn btn-warning btn-xs" href="https://CRAN.R-project.org/package=aricode">download</a>
+    
+    
+<!-- end soft/code specific -->
+    
+    
+    
+    
+    
+  </div>
+  
+  <div class="col-md-2">
+    <div class="btn-group">
+      <button class="btn btn-info btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+	BibTeX <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+	<pre>@soft{aricode,
+  author = {Chiquet, J. and Dervieux, V. and Rigaill, G.},
+  title = {aricode: a package for efficient computations of
+                    standard clustering comparison measures},
+  howpublished = {\url{https://CRAN.R-project.org/package=aricode}},
+  download = {https://CRAN.R-project.org/package=aricode},
+  year = {2018}
+}
+</pre>
+      </ul>
+    </div>
+    
+
+  </div>
+</div>
+
+
+</li>
+<li><div class="row"> 
+  <div class="col-md-10"> <span id="spring">Chiquet J: <b>SPRING: Structured selection of Primordial Relationships IN the General linear model</b>, 2017</span> <br />
+<!-- begin soft/code specific -->
+     
+    <p> Sparse conditional Gaussian graphical modeling
+                  with Laplacian regularization.</p>
+    
+    
+    <a role="button" class="btn btn-warning btn-xs" href="https://github.com/jchiquet/spring">download</a>
+    
+    
+<!-- end soft/code specific -->
+    
+    
+    
+    
+    
+  </div>
+  
+  <div class="col-md-2">
+    <div class="btn-group">
+      <button class="btn btn-info btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+	BibTeX <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+	<pre>@soft{spring,
+  author = {Chiquet, J.},
+  title = {SPRING: Structured selection of Primordial Relationships IN the General linear model},
+  howpublished = {\url{https://github.com/jchiquet/spring}},
+  download = {https://github.com/jchiquet/spring},
+  year = {2017},
+  note = {Sparse conditional Gaussian graphical modeling
+                    with Laplacian regularization.}
+}
+</pre>
+      </ul>
+    </div>
+    
+
+  </div>
+</div>
+
+
+</li>
+<li><div class="row"> 
+  <div class="col-md-10"> <span id="multivarsel">Perrot M, Levy-Leduc C, Chiquet J: <b>MultiVarSel: Variable Selection in the Multivariate Linear Model</b>, 2017</span> <br />
+<!-- begin soft/code specific -->
+    
+    
+    <a role="button" class="btn btn-warning btn-xs" href="https://CRAN.R-project.org/package=MultiVarSel">download</a>
+    
+    
+<!-- end soft/code specific -->
+    
+    
+    
+    
+    
+  </div>
+  
+  <div class="col-md-2">
+    <div class="btn-group">
+      <button class="btn btn-info btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+	BibTeX <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+	<pre>@soft{multivarsel,
+  author = {Perrot, M. and Levy-Leduc, C. and Chiquet, J.},
+  title = {MultiVarSel: Variable Selection in the Multivariate Linear Model},
+  howpublished = {\url{https://CRAN.R-project.org/package=MultiVarSel}},
+  download = {https://CRAN.R-project.org/package=MultiVarSel},
+  year = {2017}
+}
+</pre>
+      </ul>
+    </div>
+    
+
+  </div>
+</div>
+
+
+</li>
+<li><div class="row"> 
+  <div class="col-md-10"> <span id="blockseg">Brault V, Chiquet J: <b>blockseg: two Dimensional Change-Points Detection</b>, 2016</span> <br />
+<!-- begin soft/code specific -->
+     
+    <p> Segments a matrix in blocks with constant
+                  values. The underlying algorithm is a Lars-type
+                  algorithm where all the matrix operation can be
+                  computed explicitly.</p>
+    
+    
+    <a role="button" class="btn btn-warning btn-xs" href="https://CRAN.R-project.org/package=blockseg">download</a>
+    
+    
+<!-- end soft/code specific -->
+    
+    
+    
+    
+    
+  </div>
+  
+  <div class="col-md-2">
+    <div class="btn-group">
+      <button class="btn btn-info btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+	BibTeX <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+	<pre>@soft{blockseg,
+  author = {Brault, V. and Chiquet, J.},
+  title = {blockseg: two Dimensional Change-Points Detection},
+  howpublished = {\url{https://CRAN.R-project.org/package=blockseg}},
+  download = {https://CRAN.R-project.org/package=blockseg},
+  year = {2016},
+  note = {Segments a matrix in blocks with constant
+                    values. The underlying algorithm is a Lars-type
+                    algorithm where all the matrix operation can be
+                    computed explicitly.}
+}
+</pre>
+      </ul>
+    </div>
+    
+
+  </div>
+</div>
+
+
+</li>
+<li><div class="row"> 
+  <div class="col-md-10"> <span id="spinyreg">Bouveyron C, Chiquet J, Latouche P, Mattei P-A: <b>spinyReg: Sparse Generative Model and Its EM Algorithm</b>, 2015</span> <br />
+<!-- begin soft/code specific -->
+     
+    <p> Implements a generative model that uses a
+                  spike-and-slab like prior distribution obtained by
+                  multiplying a deterministic binary vector.</p>
+    
+    
+    <a role="button" class="btn btn-warning btn-xs" href="https://cran.r-project.org/web/packages/spinyReg/">download</a>
+    
+    
+<!-- end soft/code specific -->
+    
+    
+    
+    
+    
+  </div>
+  
+  <div class="col-md-2">
+    <div class="btn-group">
+      <button class="btn btn-info btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+	BibTeX <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+	<pre>@soft{spinyreg,
+  author = {Bouveyron, C. and Chiquet, J. and Latouche, P. and Mattei, P.-A.},
+  title = {spinyReg: Sparse Generative Model and Its EM Algorithm},
+  howpublished = {\url{https://cran.r-project.org/web/packages/spinyReg/}},
+  download = {https://cran.r-project.org/web/packages/spinyReg/},
+  year = {2015},
+  note = {Implements a generative model that uses a
+                    spike-and-slab like prior distribution obtained by
+                    multiplying a deterministic binary vector.}
+}
+</pre>
+      </ul>
+    </div>
+    
+
+  </div>
+</div>
+
+
+</li>
+<li><div class="row"> 
+  <div class="col-md-10"> <span id="quadrupen">Chiquet J: <b>Quadrupen: Sparsity by Worst-Case Quadratic Penalties</b>, 2012</span> <br />
+<!-- begin soft/code specific -->
+     
+    <p> This package fits classical sparse regression models
+                  with efficient active set algorithms by solving
+                  quadratic problems.</p>
+    
+    
+    <a role="button" class="btn btn-warning btn-xs" href="http://cran.r-project.org/web/packages/quadrupen/">download</a>
+    
+    
+<!-- end soft/code specific -->
+    
+    
+    
+    
+    
+  </div>
+  
+  <div class="col-md-2">
+    <div class="btn-group">
+      <button class="btn btn-info btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+	BibTeX <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+	<pre>@soft{quadrupen,
+  author = {Chiquet, J.},
+  title = {Quadrupen: Sparsity by Worst-Case Quadratic Penalties},
+  howpublished = {\url{http://cran.r-project.org/web/packages/quadrupen/}},
+  download = {http://cran.r-project.org/web/packages/quadrupen/},
+  year = {2012},
+  note = {This package fits classical sparse regression models
+                    with efficient active set algorithms by solving
+                    quadratic problems.}
+}
+</pre>
+      </ul>
+    </div>
+    
+
+  </div>
+</div>
+
+
+</li>
+<li><div class="row"> 
+  <div class="col-md-10"> <span id="scoop">Chiquet J: <b>Scoop: Sparse Cooperative Regression</b>, 2011</span> <br />
+<!-- begin soft/code specific -->
+     
+    <p> Fits coop-Lasso, group-Lasso and tree-group Lasso variants
+                  for linear regression and logistic regression</p>
+    
+    
+    <a role="button" class="btn btn-warning btn-xs" href="http://julien.cremeriefamily.info/scoop">download</a>
+    
+    
+    <a role="button" class="btn btn-danger btn-xs" href="http://julien.cremeriefamily.info/scoop">web page</a>
+    
+<!-- end soft/code specific -->
+    
+    
+    
+    
+    
+  </div>
+  
+  <div class="col-md-2">
+    <div class="btn-group">
+      <button class="btn btn-info btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+	BibTeX <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+	<pre>@soft{scoop,
+  author = {Chiquet, J.},
+  title = {Scoop: Sparse Cooperative Regression},
+  howpublished = {\url{http://julien.cremeriefamily.info/scoop}},
+  download = {http://julien.cremeriefamily.info/scoop},
+  web = {http://julien.cremeriefamily.info/scoop},
+  year = {2011},
+  note = {Fits coop-Lasso, group-Lasso and tree-group Lasso variants
+                    for linear regression and logistic regression}
+}
+</pre>
+      </ul>
+    </div>
+    
+
+  </div>
+</div>
+
+
+</li>
+<li><div class="row"> 
+  <div class="col-md-10"> <span id="simone">Chiquet J, Grasseau G, Ambroise C, Charbonnier C: <b>SIMoNe: Statistical Inference for MOdular NEtworks</b>, 2010</span> <br />
+<!-- begin soft/code specific -->
+     
+    <p> Implements the inference of
+                  co-regulated networks based on partial correlation
+                  coefficients from either steady-state or time-course
+                  transcriptomic data.</p>
+    
+    
+    <a role="button" class="btn btn-warning btn-xs" href="http://cran.r-project.org/web/packages/simone/">download</a>
+    
+    
+    <a role="button" class="btn btn-danger btn-xs" href="https://github.com/jchiquet/simone">web page</a>
+    
+<!-- end soft/code specific -->
+    
+    
+    
+    
+    
+  </div>
+  
+  <div class="col-md-2">
+    <div class="btn-group">
+      <button class="btn btn-info btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+	BibTeX <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+	<pre>@soft{simone,
+  author = {Chiquet, J. and Grasseau, G. and Ambroise, C. and Charbonnier, C.},
+  title = {SIMoNe: Statistical Inference for MOdular NEtworks},
+  howpublished = {\url{http://github.com/jchiquet/simone}},
+  download = {http://cran.r-project.org/web/packages/simone/},
+  web = {https://github.com/jchiquet/simone},
+  year = {2010},
+  note = {Implements the inference of
+                    co-regulated networks based on partial correlation
+                    coefficients from either steady-state or time-course
+                    transcriptomic data.}
+}
+</pre>
+      </ul>
+    </div>
+    
+
+  </div>
+</div>
+
+
+</li></ol>
+ <!-- content of the page -->
+    </div>
+
+    <!-- footer -->
+    <footer class="site-footer">
+
+  <div class="container">
+      <p class="pull-left text-muted">Last update: September 2020</p>
+  </div>
+
+</footer>
+
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
+
+    
+  </body>
+</html>

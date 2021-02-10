@@ -11,6 +11,7 @@ title: Research activities
 * Multivariate Analysis
 * Latent variable models
 * Graphical models
+* Optimization for statistical methods
 
 #### applications
 
@@ -25,22 +26,16 @@ title: Research activities
 * ANR project **SingleStatOmics** (2019--2022): [web page](http://anr-singlestatomics.pages.math.cnrs.fr) (leaders: F. Picard, O. Gandrillon, B.Michel, J. Chiquet, participation = 12 months)
 * ANR project **EcoNet** (2019--2022): *Advanced statistical modelling of ecological networks* (leader: C. Matias, participation = 8 months)
 * ANR project **NGB** (2018--2021): *Next  Generation  Biomonitoring of change in  ecosystems structure and function* (leader: D. Bohan, participation = 4.8 months)
-* Inra MP MEM: KineTicks (2018 -- 2019) *Network and modelling analyses to  describe  the dynamics  of  Ixodes  ricinus microbiome  and  its influence in pathogen evolution* (leader: T. Pollet, B. LAroche, J. Chiquet, participation 4 months)
 
 ### Graduated students
 
-#### current
+#### alumni
 
-* [Claire Gayral](https://lbbe.univ-lyon1.fr/-Gayral-Claire-.html?lang=fr) (2019--, with F. Picard)\\
-*Integration of Single-Cell*
-
-* [Audrey Hulot](https://www.linkedin.com/in/audrey-hulot-923ba4104/) (2017--, with F. Jaffrezic and H.-J. Garchon)\\
+* [Audrey Hulot](https://www.linkedin.com/in/audrey-hulot-923ba4104/) (2017--2020, with F. Jaffrezic and H.-J. Garchon)\\
 *Multi-omic data: clustering and network inference*
 
-* [Martina Sundqvist](http://www.theses.fr/s186343) (2017--, with T. Dubois + G. Rigaill and L. De Koning)\\
+* [Martina Sundqvist](https://www.linkedin.com/in/msundqvist/) (2017--2020, with T. Dubois + G. Rigaill and L. De Koning)\\
 *Proteomic classification of Triple Negative Breast Cancers with multi-omics analysis*
-
-#### alumni
 
 * [Marie Perrort-Dockes](https://marie-perrotdockes.github.io/) (2016--, with C. Lévy-Leduc +  L. Sansonnet)\\
 *Regularization tools for multivariate analysis: application to multi-omics*

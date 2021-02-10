@@ -7,17 +7,14 @@ title: About me
   <div class="col-md-8">
 
     <div class="bs-callout bs-callout-warning"> I am an INRAE Senior
-    	  Researcher in statistics at <a
+    	  Researcher in statistics co-leading the lab <a
     	  href="https://www6.inrae.fr/mia-paris">UMR 518 Université
-    	  Paris-Saclay/AgroParisTech/INRAE</a>, where I
-    	  am responsible for the team <a
-    	  href="https://www6.inrae.fr/mia-paris/Equipes/Statistique-Genome">
-    	  Statistics &amp; Genome</a>
+    	  Paris-Saclay/AgroParisTech/INRAE</a>.
     </div>
 
     <div class="bs-callout bs-callout-info">
     My research mainly focuses on <strong>Statistical
-    learning</strong> (sparse methods, clustering, graphical models, latent variable models...) applied to the analysis of data from life
+    learning</strong> (sparse methods, latent variable models, clustering, graphical models, ...) applied to the analysis of data from life
     sciences, more particularly <strong>omics data</strong>. More on this can be found in my
     <span class="glyphicon glyphicon-pencil"></span><a href="doc/hdr_chiquet.pdf">Habilitation à diriger les recherches</a>.
     </div>
