@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Julien Chiquet">
+  <meta name="description" content="Julien Chiquet's website">
+  
+
+  <title>Scoop software home page</title>
+  <meta name="description" content="">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://jchiquet.github.io/scoop.html">
+  <link rel="alternate" type="application/rss+xml" title="" href="https://jchiquet.github.io/feed.xml">
+
+  <link rel="stylesheet" href="/css/bs-callout.css">
+  <link rel="stylesheet" href="/css/bibliography.css">
+  <link rel="stylesheet" href="/css/sticky-footer-navbar.css">
+  <link rel="stylesheet" href="/css/morecss.css">
+  
+  <!--mathjax-->
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+</head>
+
+  
+  <!-- body -->
+  i<body>
+
+    <!-- <header class="site-header"> -->
+  <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="collapse navbar-collapse">
+	<ul class="nav navbar-nav">
+	  
+	  <li>
+	    
+	    <a href="index.html">
+	       <span class="glyphicon glyphicon-user"></span> Julien Chiquet</a>
+	  </li>
+	  
+	  <li>
+	    
+	    <a href="research.html">
+	      <span class="glyphicon glyphicon-stats"></span> Research
+	    </a>
+	  </li>
+	  
+	  <li>
+	    
+	    <a href="publications.html">
+	      <span class="glyphicon glyphicon-list"></span> Publications 
+	    </a>
+	  </li>
+	  
+	  <li>
+	    
+	    <a href="code.html">
+	      <span class="glyphicon glyphicon-list"></span> Code
+	    </a>
+	  </li>
+	  
+	  <li class="dropdown">
+	    
+	    <a class="dropdown-toggle" data-toggle="dropdown" href="teachings.html">
+	      <span class="glyphicon glyphicon-pencil"></span> Teachings <span class="caret"></span>
+	      <ul class="dropdown-menu">
+<!--		<li><a href="ds4m.html">DS4M certificate</a></li>-->
+		<li><a href="https://jchiquet.github.io/MAP573/">X - MAP573</a></li>
+		<li><a href="https://github.com/jchiquet/CourseAdvancedR">Dauphine - Advanced R</a></li>
+		<li><a href="https://github.com/jchiquet/CourseStatNetwork">ENSAI - Networks</a></li>
+		<li><a href="https://github.com/jchiquet/CourseRegLinearRegression">ENSAI - régularisation</a></li>
+		<li><a href="teachings_L3BI_ISV51.html">L3BI - Introduction to R</a></li>
+		<li><a href="http://github.com/jchiquet/JC2BIM18">(JC)2BIM</a></li>
+	      </ul>
+	    </a>
+	  </li>
+	</ul>
+	<ul class="nav navbar-nav pull-right">
+	  <li><a href="https://github.com/jchiquet"><i class="fa fa-github"></i>&nbsp;jchiquet</a></li>
+          <li><a href="http://scholar.google.fr/citations?user=FM2gRsYAAAAJ&amp;hl=en"><img width="16" src="img/gscholar.ico" />&nbsp;Scholar</a></li>
+          <li><a href="https://stateofther.github.io/"><img width="16" src="img/phare.ico" />&nbsp;StateOfTheR</a></li>
+	</ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+<!-- </header> -->
+
+    
+    <!-- Begin page content -->
+    <div class="container">
+      <div class="page-header">
+         <h1>Scoop software home page</h1> 	
+      </div>
+      <h3 id="context">Context</h3>
+
+<p>The <em>scoop</em> (Sparse cooperative regression) <code>R</code> package fits
+coop-Lasso, group-Lasso and Lasso solution paths for linear regression
+and logistic regression. The cooperative-Lasso (in short coop-Lasso)
+may be viewed as a modification of the group-Lasso penalty that
+promotes sign coherence and that allows zeros within groups.</p>
+
+<h3 id="download">Download</h3>
+
+<p><a href="doc/scoop/scoop-manual.pdf">
+<span class="glyphicon glyphicon-book"></span> R manual (uncomplete)
+</a></p>
+
+<p><a href="doc/scoop/scoop_0.2-1.tar.gz">
+<span class="glyphicon glyphicon-download-alt"></span> package sources
+</a></p>
+
+<p><a href="doc/scoop/scoop_0.2-1.tar.gz">
+<span class="glyphicon glyphicon-download-alt"></span> windoz binary version
+</a></p>
+
+<p>To install, run <code>R CMD INSTALL scoop_0.x-x.tar.gz</code> in a terminal (tested on Linux ubuntu and Mac OS 10.9).</p>
+
+<h3 id="r-code-to-reproduce-some-figures-of-the-journal-paper">R code to reproduce some Figures of <a href="http://arxiv.org/pdf/1103.2697.pdf">the journal paper</a></h3>
+
+<h4 id="basal-tumor">Basal tumor</h4>
+
+<p>Just launch the demo script linked to the package: in <code>R</code>,</p>
+
+<pre><code>library(scoop)
+demo(basal_tumor)
+</code></pre>
+
+<h4 id="breiman-experiments">Breiman experiments</h4>
+
+<p>Launch the following script to produce Figure 5 of the paper (see below). Needs ‘‘scoop’’ package installed.</p>
+
+<pre><code>rm(list=ls())
+library(scoop)
+##BREIMAN    Breiman sample generator for testing linear regression.
+##  [X,Y,BETA] = BREIMAN(CORR,H,T,SEED) produces a sample of 60 (X,Y) 
+##  pairs, of 30 covariates X(i,:) and one explained variable Y(i). 
+##  X is drawn from a multivariate normal distribution N(0,S2),
+##  where S2(i,j) = CORR^abs(i-j). 
+##  CORR (default = 0) should be in the range [-1 1];
+##  Y = X * BETA + EPSILON
+##  EPSILON is drawn from a normal distribution N(0,1)
+##  BETA is the sum of three waves centered in 5, 15 and 25:
+##  BETA(k+i) = C*(H-i)^2 , with abs(i) &lt; H, k = [ 5 15 25], where 
+##  C is a constant such that the  R^2 is about 0.75, and
+##  H (default = 1) is an integer governing the wave width (within-group
+##  sparsity).  H should be in {1,2,3,4,5} (corresponding to {3,9,15,21,27}
+##  non-zero coefficients).
+##  T (default = 3) sets the number of active groups. T should be in {1,2,3}. 
+##  Default is the original Breiman setup
+##  SEED is an optional parameter selecting the seed of the normal 
+##  pseudo-random generator used to generate X and EPSILON.
+
+## References:
+## Breiman, L., Heuristics of instability and stabilization in model 
+## selection, The Annals of Statistics, 24(6), pp 2350--2383, 1996.
+breiman_coop &lt;- function(corr=0, h=3, T=4, N = 40) {
+                                        # seed=set.seed(floor(runif(1,1:10000)))) {
+
+  d &lt;- 90          # variables
+  K &lt;- c(5,14,23,31,40,49,58,67,77,86)  # cluster centers
+  
+  X    &lt;- matrix(rnorm(N*d),N,d);
+  EXX  &lt;- corr^abs(cbind(1:d) %*% rep(1,d)-cbind(rep(1,d)) %*% c(1:d))
+  out  &lt;- eigen(EXX)
+  D    &lt;- diag(out$values)
+  V    &lt;- out$vectors
+  X    &lt;- X %*% sqrt(abs(D)) %*% t(V)  # just in case
+  beta &lt;- rep(0,d)
+
+  for (i in 1:length(K)) {
+    wave &lt;- pmax( 0 , h - abs(cbind(1:d)-K[i]) )
+    beta &lt;- beta + wave^2
+  }
+
+  ## keep only t waves (group sparsity)
+  if (T &lt;=10 &amp; T &gt;= 0) {
+    beta[c((T*9+1):d)] &lt;- 0
+  } else {
+    stop("T should be in {1,...,10}")
+  }
+
+  noise &lt;- rnorm(N,0,1)        # additive noise
+  beta &lt;- beta %*% sqrt(3/(beta %*% EXX %*% beta)) # beta normalization R2 = 0.75
+  y &lt;- X %*% beta + noise  # compute output
+
+  R2 &lt;- 1-sum(noise^2)/sum((y-mean(y))^2)
+  
+  return(list(X = X, y = y, beta = beta, R2 = R2))
+} 
+
+## ====================================================================
+
+rm(list=ls())
+library(scoop)
+source("breiman.R")
+
+## 999
+set.seed(111)
+
+## T = 3-&gt;8
+## corrélation -: encore pire
+## grande dimension ++ 
+
+## d = 90, 10 groupes de 9, T groupes actifs
+##
+## plus h est grand, plus favorable ou group-Lasso
+## plus h est petit, plus favorable ou Lasso
+##
+h &lt;- 4
+data &lt;- breiman_coop(corr=0.4,h=h,T=3,N=45)
+
+x &lt;- data$X
+y &lt;- c(data$y)
+beta.star &lt;- data$beta
+group &lt;- rep(1:10,each=9)
+
+## Lasso
+cat("\n--------------------\n")
+cat("Lasso\n")
+las &lt;- lasso(x, y, intercept=FALSE, lambda.min=0.4)
+las@group &lt;- group
+
+## Group-Lasso
+cat("\n--------------\n")
+cat("Group-Lasso\n")
+grp &lt;- group.lasso(x, y, group, intercept=FALSE, lambda.min=0.4)
+
+## Coop-Lasso
+cat("\n--------------------\n")
+cat("Cooperative-Lasso\n")
+coo &lt;- coop.lasso(x, y, group, intercept=FALSE, lambda.min=0.4)
+
+## Sparse group-Lasso
+cat("\n--------------------\n")
+cat("Sparse group-Lasso\n")
+sgl &lt;- sparse.group.lasso(x, y, group, intercept=FALSE, lambda.min=0.4)
+
+## compute BIC
+sgrp &lt;- selection(grp, sigma2=1)
+scoo &lt;- selection(coo, sigma2=1)
+slas &lt;- selection(las, sigma2=1)
+ssgl &lt;- crossval(sgl, K=5)
+beta.las &lt;- slas$beta.BIC
+beta.grp &lt;- sgrp$beta.BIC
+beta.coo &lt;- scoo$beta.BIC
+beta.sgl1 &lt;- ssgl@beta.1se
+beta.sgl2 &lt;- ssgl@beta.min
+
+lambda.las &lt;- slas$lambda.BIC
+lambda.grp &lt;- sgrp$lambda.BIC
+lambda.sgl1 &lt;- ssgl@lambda.1se
+lambda.sgl2 &lt;- ssgl@lambda.min
+lambda.coo &lt;- scoo$lambda.BIC
+t.grp    &lt;- "GroupLasso / BIC"
+t.coo    &lt;- "CoopLasso / BIC"
+t.sgl    &lt;- "Sparse Group-Lasso / CV"
+t.las    &lt;- "Lasso / BIC"
+
+lim &lt;- range(c(beta.star, beta.las, beta.sgl1, beta.sgl2, beta.grp))
+
+x11(width=7,height=12)
+par(mfrow=c(4,2))
+## lasso
+plot(las, main=t.las, lwd=2)
+abline(v=log10(lambda.las))
+plot(beta.las, main="Lasso", pch=16, ylim=lim, cex=2)
+lines(beta.star, lty=3, col="black", lwd=2)
+## group-lasso
+plot(grp, main=t.grp, lwd=2)
+abline(v=log10(lambda.grp))
+plot(beta.grp, pch=16, main="group", ylim=lim, cex=2)
+lines(beta.star, lty=3, col="black", lwd=2)
+## sparse group-lasso
+plot(sgl, main=t.sgl, lwd=2,
+     col = 1+c(group),
+     lty = c(group))
+abline(v=log10(lambda.sgl1))
+abline(v=log10(lambda.sgl2))
+plot(beta.sgl1 , pch=16, main="spgroup", ylim=lim, cex=2)
+lines(beta.star, lty=3, col="black", lwd=2)
+## coop lasso
+plot(coo, main=t.coo, lwd=2)
+abline(v=log10(lambda.coo))
+plot(beta.coo, pch=16,  main="coop", ylim=lim, cex=2)
+lines(beta.star, lty=3, col="black", lwd=2)
+</code></pre>
+
+<p><img src="img/scoop/breiman_example.png" alt="breiman" /></p>
+ <!-- content of the page -->
+    </div>
+
+    <!-- footer -->
+    <footer class="site-footer">
+
+  <div class="container">
+      <p class="pull-left text-muted">Last update: January 2021</p>
+  </div>
+
+</footer>
+
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
+
+    
+  </body>
+</html>
